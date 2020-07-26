@@ -1,8 +1,10 @@
 # UnnaturalScrollWheels
 
-![App Icon](/../master/UnnaturalScrollWheels/Assets.xcassets/AppIcon.appiconset/512x512.png?raw=true "App Icon")
+![App Icon](/../master/UnnaturalScrollWheels/Assets.xcassets/AppIcon.appiconset/256x256.png?raw=true "App Icon")
 
 Invert scroll direction for physical scroll wheels while maintaining "Natural" scrolling for trackpads on MacOS.
+
+![Screenshot](/../master/Screenshots/Screenshot.png?raw=true "Screenshot")
 
 ## Why? What does it do?
 
@@ -18,6 +20,26 @@ The issue is described here:
 https://apple.stackexchange.com/questions/116617/how-to-separate-mouse-and-trackpad-settings
 
 Unfortunately most/all solutions no longer work reliably if at all in Catalina, or offer much more functionality/bloat than you may want. This application solves the issue and is only mere kilobytes in size.
+
+## Installation
+
+1. Download the latest `.dmg` from the releases page, mount it, and copy the `.app` to your applications folder like any other application.
+
+2. Since the application is not notarized as I didn't want to contribute to Apple's addiction to greed, you will need to right click on the `.app` and choose Open.
+
+![Open Application](/../master/Screenshots/OpenApplication.png?raw=true "Open Application")
+
+3. The app requires accessibility permissions to "Control your computer". This is required to intercept scroll events, invert them and modify their deltas to disable acceleration and apply your settings.
+
+![Accessibility Popup](/../master/Screenshots/AccessibilityPopup.png?raw=true "Accessibility Popup")
+
+![Accessibility Settings](/../master/Screenshots/AccessibilitySettings.png?raw=true "Accessibility Settings")
+
+That's it!
+
+## Usage
+
+For the most part, things are self explanitory. One possible point of confusion may be how to modify your preferences once you've hidden the app from menu bar. To show preferences and to temporarily show the menu bar icon again, with the application running the background, simply open the application again which will display the preferences window.
 
 ## Run at login
 
