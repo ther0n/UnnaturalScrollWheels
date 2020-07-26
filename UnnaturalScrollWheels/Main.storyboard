@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097.2"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -15,12 +16,24 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="UnnaturalScrollWheels" systemMenu="apple" id="uQy-DD-JDr">
                                     <items>
-                                        <menuItem title="UnnaturalScrollWheels" enabled="NO" id="TKU-V0-dKD">
+                                        <menuItem title="Run at login" id="ec8-Jx-hzC">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="openAtLoginClicked:" target="Voe-Tx-rLC" id="x56-9m-VbP"/>
+                                            </connections>
                                         </menuItem>
-                                        <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
+                                        <menuItem title="Show menu bar icon" state="on" id="iCz-XU-ofw">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="showMenuBarIconClicked:" target="Voe-Tx-rLC" id="6Kr-5r-RYS"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="Mqs-gw-IM2"/>
                                         <menuItem title="Preferences…" id="BOF-NM-1cW">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="preferencesClicked:" target="Voe-Tx-rLC" id="Stb-fF-3ET"/>
+                                            </connections>
                                         </menuItem>
                                         <menuItem title="About UnnaturalScrollWheels" id="5kV-Vb-QxS">
                                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -48,14 +61,171 @@
                     <connections>
                         <outlet property="aboutMenuItem" destination="5kV-Vb-QxS" id="6MX-hy-aaT"/>
                         <outlet property="menu" destination="uQy-DD-JDr" id="5xb-8U-G4T"/>
+                        <outlet property="openAtLoginItem" destination="ec8-Jx-hzC" id="9lM-kJ-hQA"/>
                         <outlet property="preferencesMenuItem" destination="BOF-NM-1cW" id="vOu-y5-tUW"/>
                         <outlet property="quitMenuItem" destination="4sb-4s-VLi" id="K4i-ry-V7d"/>
+                        <outlet property="showMenuBarItem" destination="iCz-XU-ofw" id="ezY-tt-CsG"/>
                     </connections>
                 </customObject>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="0.0"/>
+            <point key="canvasLocation" x="192" y="0.0"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="C40-cG-uar">
+            <objects>
+                <windowController storyboardIdentifier="Preferences" showSeguePresentationStyle="single" id="Zpa-3g-tlv" sceneMemberID="viewController">
+                    <window key="window" title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="alertPanel" frameAutosaveName="" id="vP9-fG-tlQ">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+                        <rect key="contentRect" x="488" y="229" width="360" height="150"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+                        <connections>
+                            <outlet property="delegate" destination="Zpa-3g-tlv" id="2JX-Y7-FfU"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="EeT-in-kJF" kind="relationship" relationship="window.shadowedContentViewController" id="t3Y-Gs-Z4k"/>
+                    </connections>
+                </windowController>
+                <customObject id="sK5-pL-3Qy" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="655" y="0.0"/>
+        </scene>
+        <!--Preferences View Controller-->
+        <scene sceneID="OY0-Hc-euU">
+            <objects>
+                <viewController id="EeT-in-kJF" customClass="PreferencesViewController" customModule="UnnaturalScrollWheels" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="Tpp-gi-8q5">
+                        <rect key="frame" x="0.0" y="0.0" width="360" height="180"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="23v-Aq-J05">
+                                <rect key="frame" x="18" y="144" width="139" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" alignment="left" title="Invert Scroll Settings:" id="5ry-E5-OeI">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jGQ-7c-3yZ">
+                                <rect key="frame" x="161" y="142" width="160" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Invert vertical scrolling" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="CRi-ml-BgH">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" id="pq8-4N-iLQ">
+                                <rect key="frame" x="161" y="122" width="175" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Invert horizontal scrolling" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="THg-pv-IgQ">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="i4y-46-k6K">
+                                <rect key="frame" x="20" y="113" width="320" height="5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </box>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="YEQ-pd-E6f">
+                                <rect key="frame" x="18" y="91" width="139" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" alignment="left" title="Scroll Acceleration:" id="5rO-eI-18Q">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" id="w54-Ka-oAh">
+                                <rect key="frame" x="161" y="89" width="181" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Disable scroll acceleration" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="2qg-mY-yJ4">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wQb-x1-J78">
+                                <rect key="frame" x="151" y="54" width="23" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="3" drawsBackground="YES" usesSingleLineMode="YES" id="cKW-ya-e6u">
+                                    <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="TUb-qZ-u18"/>
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Slt-w3-FrL">
+                                <rect key="frame" x="179" y="51" width="19" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <stepperCell key="cell" continuous="YES" alignment="left" minValue="1" maxValue="99" doubleValue="3" id="6Wc-zd-Vhi"/>
+                                <connections>
+                                    <action selector="scrollLinesStepperPressed:" target="EeT-in-kJF" id="ibT-Uh-6UO"/>
+                                </connections>
+                            </stepper>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="YRf-tJ-Kwv">
+                                <rect key="frame" x="201" y="46" width="157" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" alignment="left" title="Number of lines to scroll per wheel click" id="jbh-dc-lZF">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dBd-6H-XkF">
+                                <rect key="frame" x="268" y="10" width="75" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Apply" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SOG-Wf-1Jb">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="applyPreferences:" target="EeT-in-kJF" id="nMm-sy-fn6"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JNx-dw-5BS">
+                                <rect key="frame" x="184" y="10" width="82" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="oKw-E4-TbY">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="dismissPreferences:" target="EeT-in-kJF" id="Vaw-mh-KL1"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XMx-HD-icG">
+                                <rect key="frame" x="21" y="10" width="68" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Help" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="X58-ra-jgf">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="openHelp:" target="EeT-in-kJF" id="dz5-em-hnR"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="disableScrollAccel" destination="w54-Ka-oAh" id="EpQ-W5-geK"/>
+                        <outlet property="invertHorizontalScroll" destination="pq8-4N-iLQ" id="zdm-WB-PHS"/>
+                        <outlet property="invertVerticalScroll" destination="jGQ-7c-3yZ" id="dJf-dl-qKt"/>
+                        <outlet property="scrollLines" destination="Slt-w3-FrL" id="Uve-SO-kL0"/>
+                        <outlet property="scrollLinesText" destination="wQb-x1-J78" id="beU-PD-4Fe"/>
+                    </connections>
+                </viewController>
+                <customObject id="1aO-dE-2h1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController id="z7u-6Y-n86"/>
+            </objects>
+            <point key="canvasLocation" x="655" y="421"/>
         </scene>
     </scenes>
 </document>

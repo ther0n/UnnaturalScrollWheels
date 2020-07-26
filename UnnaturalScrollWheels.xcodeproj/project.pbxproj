@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		91727DB224CCBDDA00432163 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91727DB124CCBDDA00432163 /* PreferencesViewController.swift */; };
 		91C7ECE424CC86B6007E2D4C /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C7ECE324CC86B6007E2D4C /* Options.swift */; };
 		91C7ECE624CC8789007E2D4C /* ScrollInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C7ECE524CC8789007E2D4C /* ScrollInterceptor.swift */; };
 		91C8ABFB24CCA471007E85A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91C8ABFA24CCA471007E85A9 /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		91727DB124CCBDDA00432163 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		91C7ECE324CC86B6007E2D4C /* Options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Options.swift; sourceTree = "<group>"; };
 		91C7ECE524CC8789007E2D4C /* ScrollInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollInterceptor.swift; sourceTree = "<group>"; };
 		91C8ABFA24CCA471007E85A9 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 				91D8069D24CB37B80092C286 /* AppDelegate.swift */,
 				91C7ECE324CC86B6007E2D4C /* Options.swift */,
 				91C8ABFA24CCA471007E85A9 /* Main.storyboard */,
+				91727DB124CCBDDA00432163 /* PreferencesViewController.swift */,
 				91C7ECE524CC8789007E2D4C /* ScrollInterceptor.swift */,
 				91D8069F24CB37BD0092C286 /* Assets.xcassets */,
 				91D806A424CB37BD0092C286 /* Info.plist */,
@@ -139,6 +142,7 @@
 				91C7ECE624CC8789007E2D4C /* ScrollInterceptor.swift in Sources */,
 				91D8069E24CB37B80092C286 /* AppDelegate.swift in Sources */,
 				91C7ECE424CC86B6007E2D4C /* Options.swift in Sources */,
+				91727DB224CCBDDA00432163 /* PreferencesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,7 +277,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 0.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.theron.UnnaturalScrollWheels;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -295,7 +299,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 0.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.theron.UnnaturalScrollWheels;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
