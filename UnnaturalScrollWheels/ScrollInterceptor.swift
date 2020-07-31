@@ -14,9 +14,31 @@ class ScrollInterceptor {
     
     // Where the magic happens
     let scrollEventCallback: CGEventTapCallBack = { (proxy: CGEventTapProxy, type: CGEventType, event: CGEvent, refcon) in
-        // isContinuous will be 0 for mice and 1 for trackpads
-        let isContinuous = event.getIntegerValueField(.scrollWheelEventIsContinuous)
-        if isContinuous == 0 {
+//        // Debugging
+//        // Usually 0 if scroll wheel unless Logitech Options or similar interferes
+//        print("Continuous: ", event.getIntegerValueField(.scrollWheelEventIsContinuous))
+//        // Undocumented values, but appear to only be non-zero for trackpads?
+//        print("MomentumPhase: ", event.getDoubleValueField(.scrollWheelEventMomentumPhase))
+//        print("ScrollCount: ", event.getDoubleValueField(.scrollWheelEventScrollCount))
+//        print("ScrollPhase: ", event.getDoubleValueField(.scrollWheelEventScrollPhase))
+        
+        var isWheel: Bool = true
+        if !Options.shared.alternateDetectionMethod {
+            // scrollWheelEventIsContinuous will be 0 for mice and 1 for trackpads
+            // probably faster than the alternate detection method since only one comparison
+            if event.getIntegerValueField(.scrollWheelEventIsContinuous) != 0 {
+                isWheel = false
+            }
+        } else {
+            // Undocumented values but seem to be non-zero only for trackpads
+            if event.getIntegerValueField(.scrollWheelEventMomentumPhase) != 0 ||
+            event.getDoubleValueField(.scrollWheelEventScrollCount) != 0.0 ||
+            event.getDoubleValueField(.scrollWheelEventScrollPhase) != 0.0 {
+                isWheel = false
+            }
+        }
+        
+        if isWheel {
             // Invert the scroll event
             if Options.shared.invertVerticalScroll {
                 event.setIntegerValueField(
