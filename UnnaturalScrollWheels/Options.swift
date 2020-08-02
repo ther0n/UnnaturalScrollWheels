@@ -13,6 +13,8 @@ class Options {
     var invertHorizontalScroll: Bool = false
     var disableScrollAccel: Bool = true
     var scrollLines: Int64 = 3
+    var alternateDetectionMethod: Bool = false
+    
     init() {
         if UserDefaults.standard.object(forKey: "ShowMenuBarIcon") == nil {
             UserDefaults.standard.set(showMenuBarIcon, forKey: "ShowMenuBarIcon")
@@ -29,6 +31,9 @@ class Options {
         if UserDefaults.standard.object(forKey: "ScrollLines") == nil {
             UserDefaults.standard.set(scrollLines, forKey: "ScrollLines")
         }
+        if UserDefaults.standard.object(forKey: "AlternateDetectionMethod") == nil {
+            UserDefaults.standard.set(alternateDetectionMethod, forKey: "AlternateDetectionMethod")
+        }
         loadOptions()
     }
     
@@ -38,6 +43,7 @@ class Options {
         invertHorizontalScroll = UserDefaults.standard.bool(forKey: "InvertHorizontalScroll")
         disableScrollAccel = UserDefaults.standard.bool(forKey: "DisableScrollAccel")
         scrollLines = Int64(UserDefaults.standard.integer(forKey: "ScrollLines"))
+        alternateDetectionMethod = UserDefaults.standard.bool(forKey: "AlternateDetectionMethod")
     }
 
 }

@@ -78,7 +78,7 @@
                 <windowController storyboardIdentifier="Preferences" showSeguePresentationStyle="single" id="Zpa-3g-tlv" sceneMemberID="viewController">
                     <window key="window" title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="alertPanel" frameAutosaveName="" id="vP9-fG-tlQ">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
-                        <rect key="contentRect" x="488" y="229" width="360" height="150"/>
+                        <rect key="contentRect" x="488" y="229" width="360" height="240"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
                         <connections>
                             <outlet property="delegate" destination="Zpa-3g-tlv" id="2JX-Y7-FfU"/>
@@ -97,11 +97,11 @@
             <objects>
                 <viewController id="EeT-in-kJF" customClass="PreferencesViewController" customModule="UnnaturalScrollWheels" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="Tpp-gi-8q5">
-                        <rect key="frame" x="0.0" y="0.0" width="360" height="180"/>
+                        <rect key="frame" x="0.0" y="0.0" width="360" height="240"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="23v-Aq-J05">
-                                <rect key="frame" x="18" y="144" width="139" height="16"/>
+                                <rect key="frame" x="18" y="204" width="139" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" alignment="left" title="Invert Scroll Settings:" id="5ry-E5-OeI">
                                     <font key="font" usesAppearanceFont="YES"/>
@@ -110,7 +110,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jGQ-7c-3yZ">
-                                <rect key="frame" x="161" y="142" width="160" height="18"/>
+                                <rect key="frame" x="161" y="202" width="160" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Invert vertical scrolling" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="CRi-ml-BgH">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -118,7 +118,7 @@
                                 </buttonCell>
                             </button>
                             <button verticalHuggingPriority="750" id="pq8-4N-iLQ">
-                                <rect key="frame" x="161" y="122" width="175" height="18"/>
+                                <rect key="frame" x="161" y="182" width="175" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Invert horizontal scrolling" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="THg-pv-IgQ">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -126,11 +126,11 @@
                                 </buttonCell>
                             </button>
                             <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="i4y-46-k6K">
-                                <rect key="frame" x="20" y="113" width="320" height="5"/>
+                                <rect key="frame" x="20" y="173" width="320" height="5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </box>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="YEQ-pd-E6f">
-                                <rect key="frame" x="18" y="91" width="139" height="16"/>
+                                <rect key="frame" x="18" y="151" width="139" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" alignment="left" title="Scroll Acceleration:" id="5rO-eI-18Q">
                                     <font key="font" usesAppearanceFont="YES"/>
@@ -139,7 +139,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" id="w54-Ka-oAh">
-                                <rect key="frame" x="161" y="89" width="181" height="18"/>
+                                <rect key="frame" x="161" y="149" width="181" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Disable scroll acceleration" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="2qg-mY-yJ4">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -147,7 +147,7 @@
                                 </buttonCell>
                             </button>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wQb-x1-J78">
-                                <rect key="frame" x="151" y="54" width="23" height="21"/>
+                                <rect key="frame" x="151" y="114" width="23" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="3" drawsBackground="YES" usesSingleLineMode="YES" id="cKW-ya-e6u">
                                     <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="TUb-qZ-u18"/>
@@ -157,7 +157,7 @@
                                 </textFieldCell>
                             </textField>
                             <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Slt-w3-FrL">
-                                <rect key="frame" x="179" y="51" width="19" height="28"/>
+                                <rect key="frame" x="179" y="111" width="19" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <stepperCell key="cell" continuous="YES" alignment="left" minValue="1" maxValue="99" doubleValue="3" id="6Wc-zd-Vhi"/>
                                 <connections>
@@ -165,7 +165,7 @@
                                 </connections>
                             </stepper>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="YRf-tJ-Kwv">
-                                <rect key="frame" x="201" y="46" width="157" height="37"/>
+                                <rect key="frame" x="201" y="106" width="157" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" alignment="left" title="Number of lines to scroll per wheel click" id="jbh-dc-lZF">
                                     <font key="font" usesAppearanceFont="YES"/>
@@ -173,8 +173,29 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="heo-qA-Xmm">
+                                <rect key="frame" x="17" y="103" width="320" height="5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </box>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="dAM-ii-T1W">
+                                <rect key="frame" x="18" y="81" width="139" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" alignment="left" title="Detection Method:" id="JBA-En-44i">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" id="WC9-Vk-b88">
+                                <rect key="frame" x="161" y="80" width="189" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Alternate detection method" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="fpD-L1-Nvz">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dBd-6H-XkF">
-                                <rect key="frame" x="268" y="10" width="75" height="32"/>
+                                <rect key="frame" x="268" y="13" width="75" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Apply" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SOG-Wf-1Jb">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -188,7 +209,7 @@ DQ
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JNx-dw-5BS">
-                                <rect key="frame" x="184" y="10" width="82" height="32"/>
+                                <rect key="frame" x="188" y="13" width="82" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="oKw-E4-TbY">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -202,7 +223,7 @@ Gw
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XMx-HD-icG">
-                                <rect key="frame" x="21" y="10" width="68" height="32"/>
+                                <rect key="frame" x="11" y="13" width="68" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Help" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="X58-ra-jgf">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -212,9 +233,19 @@ Gw
                                     <action selector="openHelp:" target="EeT-in-kJF" id="dz5-em-hnR"/>
                                 </connections>
                             </button>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="32c-TO-HCl">
+                                <rect key="frame" x="161" y="35" width="160" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" selectable="YES" title="Enable if scrolling isn't being inverted as expected" id="nmk-4f-dSU">
+                                    <font key="font" metaFont="system" size="10"/>
+                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="alternateDetectionMethod" destination="WC9-Vk-b88" id="pgG-Tc-HGO"/>
                         <outlet property="disableScrollAccel" destination="w54-Ka-oAh" id="EpQ-W5-geK"/>
                         <outlet property="invertHorizontalScroll" destination="pq8-4N-iLQ" id="zdm-WB-PHS"/>
                         <outlet property="invertVerticalScroll" destination="jGQ-7c-3yZ" id="dJf-dl-qKt"/>

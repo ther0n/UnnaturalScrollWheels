@@ -14,6 +14,7 @@ class PreferencesViewController: NSViewController {
     @IBOutlet weak var disableScrollAccel: NSButton?
     @IBOutlet weak var scrollLinesText: NSTextField?
     @IBOutlet weak var scrollLines: NSStepper?
+    @IBOutlet weak var alternateDetectionMethod: NSButton?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,7 @@ class PreferencesViewController: NSViewController {
         disableScrollAccel?.takeIntValueFrom(Options.shared.disableScrollAccel)
         scrollLines?.takeIntValueFrom(Options.shared.scrollLines)
         scrollLinesText?.takeStringValueFrom(scrollLines?.integerValue)
+        alternateDetectionMethod?.takeIntValueFrom(Options.shared.alternateDetectionMethod)
     }
     
     func activate(){
@@ -42,6 +44,7 @@ class PreferencesViewController: NSViewController {
         UserDefaults.standard.set(invertHorizontalScroll?.state == NSControl.StateValue.on, forKey: "InvertHorizontalScroll")
         UserDefaults.standard.set(disableScrollAccel?.state == NSControl.StateValue.on, forKey: "DisableScrollAccel")
         UserDefaults.standard.set(scrollLines?.integerValue, forKey: "ScrollLines")
+        UserDefaults.standard.set(alternateDetectionMethod?.state == NSControl.StateValue.on, forKey: "AlternateDetectionMethod")
         Options.shared.loadOptions()
         dismissPreferences(self)
     }
