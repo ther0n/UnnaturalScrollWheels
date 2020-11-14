@@ -23,7 +23,15 @@ Unfortunately most/all solutions no longer work reliably if at all in Catalina, 
 
 ## Installation
 
-1. Download the latest `.dmg` from the releases page, mount it, and copy the `.app` to your applications folder like any other application.
+### Using Homebrew
+
+```
+brew cask install unnaturalscrollwheels
+```
+
+### Manual download
+
+1. Download the latest `.dmg` from the [releases page](/../../releases), mount it, and copy the `.app` to your applications folder like any other application.
 
 2. Since the application is not notarized as I didn't want to contribute to Apple's addiction to greed, you will need to right click on the `.app` and choose Open.
 
