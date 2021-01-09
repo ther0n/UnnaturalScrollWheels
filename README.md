@@ -26,7 +26,7 @@ Unfortunately most/all solutions no longer work reliably if at all in Catalina, 
 ### Using Homebrew
 
 ```
-brew cask install unnaturalscrollwheels
+brew install --cask unnaturalscrollwheels
 ```
 
 ### Manual download
