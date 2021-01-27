@@ -8,29 +8,25 @@
 
 import Cocoa
 import Foundation
+import IOKit
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     
-    var statusItem: NSStatusItem?
+    private let statusItem = MenuBarItem.shared
     var prefsWindow: NSWindow?
     @IBOutlet weak var menu: NSMenu?
-    @IBOutlet weak var showMenuBarItem: NSMenuItem?
+    //@IBOutlet weak var showMenuBarItem: NSMenuItem?
     @IBOutlet weak var openAtLoginItem: NSMenuItem?
     @IBOutlet weak var preferencesMenuItem: NSMenuItem?
-    @IBOutlet weak var aboutMenuItem: NSMenuItem?
     @IBOutlet weak var quitMenuItem: NSMenuItem?
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         Options.shared.loadOptions()
-        statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-        statusItem?.button?.title = "⭥"
-        showMenuBarItem?.state = Options.shared.showMenuBarIcon ? NSControl.StateValue.on : NSControl.StateValue.off
-        if let menu = menu {
-            statusItem?.menu = menu
-        }
-        showMenuBarIcon()
+        self.statusItem.menu = self.menu
+        statusItem.refreshVisibility()
         ScrollInterceptor.shared.interceptScroll()
+        disableMouseAccel()
     }
 
     @IBAction func openAtLoginClicked(_ sender: Any) {
@@ -38,15 +34,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         NSWorkspace.shared.open(url)
     }
     
-    @IBAction func showMenuBarIconClicked(_ sender: Any) {
-        Options.shared.showMenuBarIcon = !Options.shared.showMenuBarIcon
-        UserDefaults.standard.set(Options.shared.showMenuBarIcon, forKey: "ShowMenuBarIcon")
-        showMenuBarItem?.state = Options.shared.showMenuBarIcon ? NSControl.StateValue.on : NSControl.StateValue.off
-        showMenuBarIcon()
-    }
-    
     @IBAction func preferencesClicked(_ sender: Any) {
         showPreferences()
+    }
+    
+    @IBAction func showAbout(_ sender: Any) {
+        NSApp.activate(ignoringOtherApps: true)
+        NSApp.orderFrontStandardAboutPanel(sender)
     }
     
     func showPreferences() // called from menu item
@@ -62,29 +56,30 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
             window.center()
             prefsWindow = window
         }
-        statusItem?.length = NSStatusItem.variableLength
         prefsWindow?.makeKeyAndOrderFront(self)
         NSApp.activate(ignoringOtherApps: true)
     }
-
+    
     func windowWillClose(_ notification: Notification)
     {
         prefsWindow = nil
-        showMenuBarIcon()
     }
     
-    func showMenuBarIcon() {
-        if Options.shared.showMenuBarIcon {
-            statusItem?.length = NSStatusItem.variableLength
-        } else {
-            statusItem?.length = 0.0
-        }
-    }
     
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
         if !flag {
             showPreferences()
         }
         return true
+    }
+    
+    func disableMouseAccel() {
+        if Options.shared.disableMouseAccel {
+            // Based on https://github.com/apsun/NoMouseAccel
+            let accelNum: CFNumber = CFNumberCreate(kCFAllocatorDefault, CFNumberType.sInt32Type, &Options.shared.accel)
+            let client: IOHIDEventSystemClient = IOHIDEventSystemClientCreateSimpleClient(kCFAllocatorDefault)
+            let mouseAccelerationType: CFString = kIOHIDMouseAccelerationType as NSString
+            IOHIDEventSystemClientSetProperty(client, mouseAccelerationType, accelNum)
+        }
     }
 }

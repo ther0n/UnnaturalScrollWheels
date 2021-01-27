@@ -3,4 +3,114 @@
    uuid = "6740C2C9-4E35-4EFE-A7B3-FE4CE78B91D3"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D5761B9C-4AE1-437D-9ABC-F564E84DC738"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UnnaturalScrollWheels/PreferencesViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "PreferencesViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "D5761B9C-4AE1-437D-9ABC-F564E84DC738 - f2b004c759f55cf2"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UnnaturalScrollWheels.PreferencesViewController.alternateDetectionMethod.getter : Swift.Optional&lt;__C.NSButton&gt;"
+                  moduleName = "UnnaturalScrollWheels"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/theron/Git/UnnaturalScrollWheels/UnnaturalScrollWheels/PreferencesViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "104">
+               </Location>
+               <Location
+                  uuid = "D5761B9C-4AE1-437D-9ABC-F564E84DC738 - f2b004c759f55cf2"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UnnaturalScrollWheels.PreferencesViewController.alternateDetectionMethod.setter : Swift.Optional&lt;__C.NSButton&gt;"
+                  moduleName = "UnnaturalScrollWheels"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/theron/Git/UnnaturalScrollWheels/UnnaturalScrollWheels/PreferencesViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "148">
+               </Location>
+               <Location
+                  uuid = "D5761B9C-4AE1-437D-9ABC-F564E84DC738 - d966b4a84df3fe1a"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UnnaturalScrollWheels.PreferencesViewController.alternateDetectionMethod.modify : Swift.Optional&lt;__C.NSButton&gt;"
+                  moduleName = "UnnaturalScrollWheels"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/theron/Git/UnnaturalScrollWheels/UnnaturalScrollWheels/PreferencesViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "60">
+               </Location>
+               <Location
+                  uuid = "D5761B9C-4AE1-437D-9ABC-F564E84DC738 - d1b8cbc988543ddd"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UnnaturalScrollWheels.PreferencesViewController.alternateDetectionMethod.modify : Swift.Optional&lt;__C.NSButton&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "UnnaturalScrollWheels"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/theron/Git/UnnaturalScrollWheels/UnnaturalScrollWheels/PreferencesViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "72">
+               </Location>
+               <Location
+                  uuid = "D5761B9C-4AE1-437D-9ABC-F564E84DC738 - 1cd68e65976c3924"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UnnaturalScrollWheels.PreferencesViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; UnnaturalScrollWheels.PreferencesViewController"
+                  moduleName = "UnnaturalScrollWheels"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/theron/Git/UnnaturalScrollWheels/UnnaturalScrollWheels/PreferencesViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "636">
+               </Location>
+               <Location
+                  uuid = "D5761B9C-4AE1-437D-9ABC-F564E84DC738 - 91f7232eabb7e5f4"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UnnaturalScrollWheels.PreferencesViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;UnnaturalScrollWheels.PreferencesViewController&gt;"
+                  moduleName = "UnnaturalScrollWheels"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/theron/Git/UnnaturalScrollWheels/UnnaturalScrollWheels/PreferencesViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "612">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
