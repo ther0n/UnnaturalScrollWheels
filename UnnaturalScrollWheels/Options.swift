@@ -15,7 +15,7 @@ class Options {
     var disableScrollAccel: Bool = true
     var scrollLines: Int64 = 3
     var alternateDetectionMethod: Bool = false
-    var disableMouseAccel: Bool = true
+    var disableMouseAccel: Bool = false
     
     init() {
         if UserDefaults.standard.object(forKey: "ShowMenuBarIcon") == nil {
