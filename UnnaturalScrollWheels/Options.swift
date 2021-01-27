@@ -8,12 +8,14 @@
 import Foundation
 class Options {
     static let shared = Options()
+    var accel: Int32 = -1
     var showMenuBarIcon: Bool = true
     var invertVerticalScroll: Bool = true
     var invertHorizontalScroll: Bool = false
     var disableScrollAccel: Bool = true
     var scrollLines: Int64 = 3
     var alternateDetectionMethod: Bool = false
+    var disableMouseAccel: Bool = false
     
     init() {
         if UserDefaults.standard.object(forKey: "ShowMenuBarIcon") == nil {
@@ -34,6 +36,9 @@ class Options {
         if UserDefaults.standard.object(forKey: "AlternateDetectionMethod") == nil {
             UserDefaults.standard.set(alternateDetectionMethod, forKey: "AlternateDetectionMethod")
         }
+        if UserDefaults.standard.object(forKey: "DisableMouseAccel") == nil {
+            UserDefaults.standard.set(disableMouseAccel, forKey: "DisableMouseAccel")
+        }
         loadOptions()
     }
     
@@ -44,6 +49,6 @@ class Options {
         disableScrollAccel = UserDefaults.standard.bool(forKey: "DisableScrollAccel")
         scrollLines = Int64(UserDefaults.standard.integer(forKey: "ScrollLines"))
         alternateDetectionMethod = UserDefaults.standard.bool(forKey: "AlternateDetectionMethod")
+        disableMouseAccel = UserDefaults.standard.bool(forKey: "DisableMouseAccel")
     }
-
 }

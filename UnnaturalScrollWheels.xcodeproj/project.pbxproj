@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		91727DB224CCBDDA00432163 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91727DB124CCBDDA00432163 /* PreferencesViewController.swift */; };
+		918546AB25C0758700B2AD21 /* MenuBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918546AA25C0758700B2AD21 /* MenuBarItem.swift */; };
 		91C7ECE424CC86B6007E2D4C /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C7ECE324CC86B6007E2D4C /* Options.swift */; };
 		91C7ECE624CC8789007E2D4C /* ScrollInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C7ECE524CC8789007E2D4C /* ScrollInterceptor.swift */; };
 		91C8ABFB24CCA471007E85A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91C8ABFA24CCA471007E85A9 /* Main.storyboard */; };
@@ -16,7 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9138880425B0CB2700A3A633 /* UnnaturalScrollWheels-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnnaturalScrollWheels-Bridging-Header.h"; sourceTree = "<group>"; };
 		91727DB124CCBDDA00432163 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
+		918546AA25C0758700B2AD21 /* MenuBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarItem.swift; sourceTree = "<group>"; };
 		91C7ECE324CC86B6007E2D4C /* Options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Options.swift; sourceTree = "<group>"; };
 		91C7ECE524CC8789007E2D4C /* ScrollInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollInterceptor.swift; sourceTree = "<group>"; };
 		91C8ABFA24CCA471007E85A9 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -59,12 +62,14 @@
 			children = (
 				91D8069D24CB37B80092C286 /* AppDelegate.swift */,
 				91C7ECE324CC86B6007E2D4C /* Options.swift */,
-				91C8ABFA24CCA471007E85A9 /* Main.storyboard */,
 				91727DB124CCBDDA00432163 /* PreferencesViewController.swift */,
 				91C7ECE524CC8789007E2D4C /* ScrollInterceptor.swift */,
+				9138880425B0CB2700A3A633 /* UnnaturalScrollWheels-Bridging-Header.h */,
+				91C8ABFA24CCA471007E85A9 /* Main.storyboard */,
 				91D8069F24CB37BD0092C286 /* Assets.xcassets */,
 				91D806A424CB37BD0092C286 /* Info.plist */,
 				91D806A524CB37BD0092C286 /* UnnaturalScrollWheels.entitlements */,
+				918546AA25C0758700B2AD21 /* MenuBarItem.swift */,
 			);
 			path = UnnaturalScrollWheels;
 			sourceTree = "<group>";
@@ -101,6 +106,7 @@
 				TargetAttributes = {
 					91D8069924CB37B80092C286 = {
 						CreatedOnToolsVersion = 11.6;
+						LastSwiftMigration = 1230;
 					};
 				};
 			};
@@ -140,6 +146,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				91C7ECE624CC8789007E2D4C /* ScrollInterceptor.swift in Sources */,
+				918546AB25C0758700B2AD21 /* MenuBarItem.swift in Sources */,
 				91D8069E24CB37B80092C286 /* AppDelegate.swift in Sources */,
 				91C7ECE424CC86B6007E2D4C /* Options.swift in Sources */,
 				91727DB224CCBDDA00432163 /* PreferencesViewController.swift in Sources */,
@@ -268,6 +275,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = UnnaturalScrollWheels/UnnaturalScrollWheels.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
@@ -280,9 +288,11 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.theron.UnnaturalScrollWheels;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "UnnaturalScrollWheels/UnnaturalScrollWheels-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -291,6 +301,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = UnnaturalScrollWheels/UnnaturalScrollWheels.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
@@ -303,9 +314,10 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.theron.UnnaturalScrollWheels;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "UnnaturalScrollWheels/UnnaturalScrollWheels-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;

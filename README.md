@@ -19,7 +19,7 @@ The issue is described here:
 
 https://apple.stackexchange.com/questions/116617/how-to-separate-mouse-and-trackpad-settings
 
-Unfortunately most/all solutions no longer work reliably if at all in Catalina, or offer much more functionality/bloat than you may want. This application solves the issue and is only mere kilobytes in size.
+Unfortunately most/all solutions no longer work reliably if at all in Catalina.
 
 ## Installation
 
@@ -33,7 +33,7 @@ brew install --cask unnaturalscrollwheels
 
 1. Download the latest `.dmg` from the [releases page](/../../releases), mount it, and copy the `.app` to your applications folder like any other application.
 
-2. Since the application is not notarized as I didn't want to contribute to Apple's addiction to greed, you will need to right click on the `.app` and choose Open.
+2. The application is not notarized since I haven't paid the yearly $100 fee to join the Apple Developer Program, you will need to right click on the `.app` and choose Open.
 
 ![Open Application](/../master/Screenshots/OpenApplication.png?raw=true "Open Application")
 
