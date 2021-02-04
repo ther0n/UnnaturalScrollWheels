@@ -58,11 +58,6 @@ class PreferencesViewController: NSViewController {
     
     @IBAction func disableMouseAccelClicked(_ sender: Any){
         Options.shared.disableMouseAccel = !Options.shared.disableMouseAccel
-        if Options.shared.disableMouseAccel {
-            Options.shared.accel = -1
-        } else {
-            Options.shared.accel = Options.shared.origAccel
-        }
         appDelegate?.disableMouseAccel()
     }
     

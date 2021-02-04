@@ -130,6 +130,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
             Options.shared.origAccel = origAccel
             UserDefaults.standard.set(origAccel, forKey: "OriginalAccel")
         }
+        if Options.shared.disableMouseAccel {
+            Options.shared.accel = -1
+        } else {
+            Options.shared.accel = Options.shared.origAccel
+        }
         // Set the mouse acceleration
         let accelNum: CFNumber = CFNumberCreate(kCFAllocatorDefault, CFNumberType.sInt32Type, &Options.shared.accel)
         IOHIDEventSystemClientSetProperty(client, mouseAccelerationType, accelNum)
