@@ -104,6 +104,9 @@
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="invertHorizontalScrollClicked:" target="EeT-in-kJF" id="VQv-q1-BYZ"/>
+                                        </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jGQ-7c-3yZ">
                                         <rect key="frame" x="-2" y="270" width="164" height="18"/>
@@ -114,6 +117,9 @@
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="invertVerticalScrollClicked:" target="EeT-in-kJF" id="xVH-v2-hh4"/>
+                                        </connections>
                                     </button>
                                     <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="JFi-ui-cJO">
                                         <rect key="frame" x="0.0" y="251" width="320" height="14"/>
@@ -130,6 +136,9 @@
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="disableScrollAccelClicked:" target="EeT-in-kJF" id="7Xl-Gj-Bdm"/>
+                                        </connections>
                                     </button>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Byr-Ll-IO8">
                                         <rect key="frame" x="0.0" y="199" width="288" height="22"/>
@@ -198,13 +207,16 @@
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="alternateDetectionMethodClicked:" target="EeT-in-kJF" id="EGD-3a-Ipe"/>
+                                        </connections>
                                     </button>
                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="32c-TO-HCl">
-                                        <rect key="frame" x="-2" y="136" width="247" height="13"/>
+                                        <rect key="frame" x="-2" y="136" width="313" height="13"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="13" id="EEt-Zg-Acg"/>
                                         </constraints>
-                                        <textFieldCell key="cell" selectable="YES" title="Enable if scrolling isn't being inverted as expected" id="nmk-4f-dSU">
+                                        <textFieldCell key="cell" selectable="YES" title="Required for certain mice, enable if scrolling isn't being inverted" id="nmk-4f-dSU">
                                             <font key="font" metaFont="system" size="10"/>
                                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -219,10 +231,13 @@
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="disableMouseAccelClicked:" target="EeT-in-kJF" id="wGD-8i-aFj"/>
+                                        </connections>
                                     </button>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oUF-V2-P7R">
                                         <rect key="frame" x="-2" y="91" width="139" height="13"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" title="1:1 mouse/cursor movement" id="YfG-ae-gyc">
+                                        <textFieldCell key="cell" title="1:1 mouse/cursor movement" id="YfG-ae-gyc">
                                             <font key="font" metaFont="system" size="10"/>
                                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -238,7 +253,7 @@
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="showMenuBarIconClicked:" target="EeT-in-kJF" id="zVp-ES-RFn"/>
+                                            <action selector="showMenuBarItem:" target="EeT-in-kJF" id="7bt-eT-jYr"/>
                                         </connections>
                                     </button>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sAx-Nf-FB0">
@@ -260,9 +275,6 @@
                                         <subviews>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XMx-HD-icG">
                                                 <rect key="frame" x="-7" y="-7" width="62" height="32"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="20" id="z1d-pt-Ir0"/>
-                                                </constraints>
                                                 <buttonCell key="cell" type="push" title="Help" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="X58-ra-jgf">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
@@ -272,7 +284,7 @@
                                                 </connections>
                                             </button>
                                             <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qEP-Nk-GGw">
-                                                <rect key="frame" x="235" y="0.0" width="125" height="20"/>
+                                                <rect key="frame" x="251" y="0.0" width="109" height="20"/>
                                                 <subviews>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JNx-dw-5BS">
                                                         <rect key="frame" x="-7" y="-7" width="76" height="32"/>
@@ -284,14 +296,17 @@ Gw
 </string>
                                                         </buttonCell>
                                                         <connections>
-                                                            <action selector="dismissPreferences:" target="EeT-in-kJF" id="Vaw-mh-KL1"/>
+                                                            <action selector="dismissPreferences:" target="EeT-in-kJF" id="BwP-JM-W0l"/>
                                                         </connections>
                                                     </button>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dBd-6H-XkF">
-                                                        <rect key="frame" x="63" y="-7" width="69" height="32"/>
-                                                        <buttonCell key="cell" type="push" title="Apply" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SOG-Wf-1Jb">
+                                                        <rect key="frame" x="63" y="-7" width="53" height="32"/>
+                                                        <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SOG-Wf-1Jb">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
+                                                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
                                                         </buttonCell>
                                                         <connections>
                                                             <action selector="applyPreferences:" target="EeT-in-kJF" id="nMm-sy-fn6"/>
@@ -313,6 +328,7 @@ Gw
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="LKu-Fz-tjk"/>
+                                            <constraint firstAttribute="width" constant="360" id="dT5-Js-a0s"/>
                                         </constraints>
                                         <visibilityPriorities>
                                             <integer value="1000"/>
@@ -367,7 +383,7 @@ Gw
                     </view>
                     <connections>
                         <outlet property="alternateDetectionMethod" destination="WC9-Vk-b88" id="pgG-Tc-HGO"/>
-                        <outlet property="disableMouseAccel" destination="zKl-6W-QQK" id="zfW-nT-k34"/>
+                        <outlet property="disableMouseAccel" destination="zKl-6W-QQK" id="Y6Q-Vh-qrg"/>
                         <outlet property="disableScrollAccel" destination="w54-Ka-oAh" id="EpQ-W5-geK"/>
                         <outlet property="invertHorizontalScroll" destination="pq8-4N-iLQ" id="zdm-WB-PHS"/>
                         <outlet property="invertVerticalScroll" destination="jGQ-7c-3yZ" id="dJf-dl-qKt"/>
@@ -378,7 +394,7 @@ Gw
                 </viewController>
                 <customObject id="1aO-dE-2h1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="655" y="418"/>
+            <point key="canvasLocation" x="655" y="417.5"/>
         </scene>
     </scenes>
 </document>

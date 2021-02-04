@@ -7,22 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		914D7D7825C3108C00503565 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 914D7D7A25C3108C00503565 /* Main.storyboard */; };
+		914D7D8225C32FD800503565 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 914D7D8425C32FD800503565 /* Localizable.strings */; };
 		91727DB224CCBDDA00432163 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91727DB124CCBDDA00432163 /* PreferencesViewController.swift */; };
 		918546AB25C0758700B2AD21 /* MenuBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918546AA25C0758700B2AD21 /* MenuBarItem.swift */; };
 		91C7ECE424CC86B6007E2D4C /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C7ECE324CC86B6007E2D4C /* Options.swift */; };
 		91C7ECE624CC8789007E2D4C /* ScrollInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C7ECE524CC8789007E2D4C /* ScrollInterceptor.swift */; };
-		91C8ABFB24CCA471007E85A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91C8ABFA24CCA471007E85A9 /* Main.storyboard */; };
 		91D8069E24CB37B80092C286 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D8069D24CB37B80092C286 /* AppDelegate.swift */; };
 		91D806A024CB37BD0092C286 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91D8069F24CB37BD0092C286 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		9138880425B0CB2700A3A633 /* UnnaturalScrollWheels-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnnaturalScrollWheels-Bridging-Header.h"; sourceTree = "<group>"; };
+		914D7D7925C3108C00503565 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
+		914D7D8325C32FD800503565 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		914D7D8925C342A900503565 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		91727DB124CCBDDA00432163 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		918546AA25C0758700B2AD21 /* MenuBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarItem.swift; sourceTree = "<group>"; };
 		91C7ECE324CC86B6007E2D4C /* Options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Options.swift; sourceTree = "<group>"; };
 		91C7ECE524CC8789007E2D4C /* ScrollInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollInterceptor.swift; sourceTree = "<group>"; };
-		91C8ABFA24CCA471007E85A9 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		91D8069A24CB37B80092C286 /* UnnaturalScrollWheels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnnaturalScrollWheels.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91D8069D24CB37B80092C286 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91D8069F24CB37BD0092C286 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -60,12 +63,13 @@
 		91D8069C24CB37B80092C286 /* UnnaturalScrollWheels */ = {
 			isa = PBXGroup;
 			children = (
+				914D7D8425C32FD800503565 /* Localizable.strings */,
 				91D8069D24CB37B80092C286 /* AppDelegate.swift */,
 				91C7ECE324CC86B6007E2D4C /* Options.swift */,
 				91727DB124CCBDDA00432163 /* PreferencesViewController.swift */,
 				91C7ECE524CC8789007E2D4C /* ScrollInterceptor.swift */,
 				9138880425B0CB2700A3A633 /* UnnaturalScrollWheels-Bridging-Header.h */,
-				91C8ABFA24CCA471007E85A9 /* Main.storyboard */,
+				914D7D7A25C3108C00503565 /* Main.storyboard */,
 				91D8069F24CB37BD0092C286 /* Assets.xcassets */,
 				91D806A424CB37BD0092C286 /* Info.plist */,
 				91D806A524CB37BD0092C286 /* UnnaturalScrollWheels.entitlements */,
@@ -134,7 +138,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				91D806A024CB37BD0092C286 /* Assets.xcassets in Resources */,
-				91C8ABFB24CCA471007E85A9 /* Main.storyboard in Resources */,
+				914D7D8225C32FD800503565 /* Localizable.strings in Resources */,
+				914D7D7825C3108C00503565 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,6 +159,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		914D7D7A25C3108C00503565 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				914D7D7925C3108C00503565 /* en */,
+				914D7D8925C342A900503565 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		914D7D8425C32FD800503565 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				914D7D8325C32FD800503565 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		91D806A624CB37BD0092C286 /* Debug */ = {
@@ -288,7 +313,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.theron.UnnaturalScrollWheels;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "UnnaturalScrollWheels/UnnaturalScrollWheels-Bridging-Header.h";
@@ -314,7 +339,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.theron.UnnaturalScrollWheels;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "UnnaturalScrollWheels/UnnaturalScrollWheels-Bridging-Header.h";

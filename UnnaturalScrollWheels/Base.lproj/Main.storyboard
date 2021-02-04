@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Application-->
+        <scene sceneID="JPo-4y-FX3">
+            <objects>
+                <application id="hnw-xV-0zn" sceneMemberID="viewController">
+                    <menu key="mainMenu" title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
+                        <items>
+                            <menuItem title="UnnaturalScrollWheels" id="1Xt-HY-uBw">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="UnnaturalScrollWheels" systemMenu="apple" id="uQy-DD-JDr">
+                                    <items>
+                                        <menuItem title="Run at login" id="ec8-Jx-hzC">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="openAtLoginClicked:" target="Voe-Tx-rLC" id="x56-9m-VbP"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="Mqs-gw-IM2"/>
+                                        <menuItem title="Preferences…" id="BOF-NM-1cW">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="preferencesClicked:" target="Voe-Tx-rLC" id="Stb-fF-3ET"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="About UnnaturalScrollWheels" id="5kV-Vb-QxS">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="showAbout:" target="Voe-Tx-rLC" id="vPe-7c-xA4"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="kCx-OE-vgT"/>
+                                        <menuItem title="Quit UnnaturalScrollWheels" id="4sb-4s-VLi">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="terminate:" target="Ady-hI-5gd" id="Te7-pn-YzF"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                        </items>
+                    </menu>
+                    <connections>
+                        <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
+                    </connections>
+                </application>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="UnnaturalScrollWheels" customModuleProvider="target">
+                    <connections>
+                        <outlet property="menu" destination="uQy-DD-JDr" id="5xb-8U-G4T"/>
+                        <outlet property="openAtLoginItem" destination="ec8-Jx-hzC" id="9lM-kJ-hQA"/>
+                        <outlet property="preferencesMenuItem" destination="BOF-NM-1cW" id="vOu-y5-tUW"/>
+                        <outlet property="quitMenuItem" destination="4sb-4s-VLi" id="K4i-ry-V7d"/>
+                    </connections>
+                </customObject>
+                <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
+                <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="192" y="0.0"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="C40-cG-uar">
+            <objects>
+                <windowController storyboardIdentifier="Preferences" showSeguePresentationStyle="single" id="Zpa-3g-tlv" sceneMemberID="viewController">
+                    <window key="window" title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="alertPanel" frameAutosaveName="" id="vP9-fG-tlQ">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+                        <rect key="contentRect" x="488" y="229" width="360" height="240"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+                        <connections>
+                            <outlet property="delegate" destination="Zpa-3g-tlv" id="2JX-Y7-FfU"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="EeT-in-kJF" kind="relationship" relationship="window.shadowedContentViewController" id="t3Y-Gs-Z4k"/>
+                    </connections>
+                </windowController>
+                <customObject id="sK5-pL-3Qy" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="655" y="0.0"/>
+        </scene>
+        <!--Preferences View Controller-->
+        <scene sceneID="OY0-Hc-euU">
+            <objects>
+                <viewController id="EeT-in-kJF" customClass="PreferencesViewController" customModule="UnnaturalScrollWheels" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="Tpp-gi-8q5">
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="351"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <subviews>
+                            <stackView distribution="fillEqually" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Gb-2g-xS1">
+                                <rect key="frame" x="20" y="20" width="360" height="311"/>
+                                <subviews>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pq8-4N-iLQ">
+                                        <rect key="frame" x="-2" y="294" width="179" height="18"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="ADb-uv-XNX"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="check" title="Invert horizontal scrolling" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="THg-pv-IgQ">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="invertHorizontalScrollClicked:" target="EeT-in-kJF" id="VQv-q1-BYZ"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jGQ-7c-3yZ">
+                                        <rect key="frame" x="-2" y="270" width="164" height="18"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="gU9-hz-xJn"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="check" title="Invert vertical scrolling" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="CRi-ml-BgH">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="invertVerticalScrollClicked:" target="EeT-in-kJF" id="xVH-v2-hh4"/>
+                                        </connections>
+                                    </button>
+                                    <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="JFi-ui-cJO">
+                                        <rect key="frame" x="0.0" y="251" width="320" height="14"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="10" id="cWb-lo-ujw"/>
+                                        </constraints>
+                                    </box>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="w54-Ka-oAh">
+                                        <rect key="frame" x="-2" y="228" width="185" height="18"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="vwG-mg-0Nt"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="check" title="Disable scroll acceleration" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="2qg-mY-yJ4">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="disableScrollAccelClicked:" target="EeT-in-kJF" id="7Xl-Gj-Bdm"/>
+                                        </connections>
+                                    </button>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Byr-Ll-IO8">
+                                        <rect key="frame" x="0.0" y="199" width="288" height="22"/>
+                                        <subviews>
+                                            <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Slt-w3-FrL">
+                                                <rect key="frame" x="-3" y="-3" width="19" height="28"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="22" id="IAI-oo-ij5"/>
+                                                    <constraint firstAttribute="width" constant="13" id="pG2-x5-flw"/>
+                                                </constraints>
+                                                <stepperCell key="cell" continuous="YES" alignment="left" minValue="1" maxValue="99" doubleValue="3" id="6Wc-zd-Vhi"/>
+                                                <connections>
+                                                    <action selector="scrollLinesStepperPressed:" target="EeT-in-kJF" id="ibT-Uh-6UO"/>
+                                                </connections>
+                                            </stepper>
+                                            <textField verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wQb-x1-J78">
+                                                <rect key="frame" x="21" y="1" width="17" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="21" id="89Q-xG-Iph"/>
+                                                </constraints>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="3" drawsBackground="YES" usesSingleLineMode="YES" id="cKW-ya-e6u">
+                                                    <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="TUb-qZ-u18"/>
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YRf-tJ-Kwv">
+                                                <rect key="frame" x="44" y="3" width="246" height="16"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="16" id="zNE-U5-UMu"/>
+                                                </constraints>
+                                                <textFieldCell key="cell" alignment="left" title="Number of lines to scroll per wheel click" id="jbh-dc-lZF">
+                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="22" id="p12-PR-zrM"/>
+                                        </constraints>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="MXh-JO-jZ4">
+                                        <rect key="frame" x="0.0" y="179" width="320" height="14"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="10" id="zn7-7w-dIT"/>
+                                        </constraints>
+                                    </box>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WC9-Vk-b88">
+                                        <rect key="frame" x="-2" y="156" width="193" height="18"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="pHm-eR-xzm"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="check" title="Alternate detection method" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="fpD-L1-Nvz">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="alternateDetectionMethodClicked:" target="EeT-in-kJF" id="EGD-3a-Ipe"/>
+                                        </connections>
+                                    </button>
+                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="32c-TO-HCl">
+                                        <rect key="frame" x="-2" y="136" width="247" height="13"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="13" id="EEt-Zg-Acg"/>
+                                        </constraints>
+                                        <textFieldCell key="cell" selectable="YES" title="Enable if scrolling isn't being inverted as expected" id="nmk-4f-dSU">
+                                            <font key="font" metaFont="system" size="10"/>
+                                            <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zKl-6W-QQK">
+                                        <rect key="frame" x="-2" y="111" width="193" height="18"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="QeP-pg-trR"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="check" title="Disable mouse acceleration" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="uBt-a0-G5E">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="disableMouseAccelClicked:" target="EeT-in-kJF" id="wGD-8i-aFj"/>
+                                        </connections>
+                                    </button>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oUF-V2-P7R">
+                                        <rect key="frame" x="-2" y="91" width="139" height="13"/>
+                                        <textFieldCell key="cell" title="1:1 mouse/cursor movement" id="YfG-ae-gyc">
+                                            <font key="font" metaFont="system" size="10"/>
+                                            <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dNO-k4-DXG">
+                                        <rect key="frame" x="-2" y="66" width="149" height="18"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="Sx7-ip-Q8Z"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="check" title="Show menu bar icon" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="S1r-5q-wwg">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="showMenuBarItem:" target="EeT-in-kJF" id="7bt-eT-jYr"/>
+                                        </connections>
+                                    </button>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sAx-Nf-FB0">
+                                        <rect key="frame" x="-2" y="46" width="284" height="13"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="If disabled, open the app from Finder to show preferences" id="3iq-1l-Jxb">
+                                            <font key="font" metaFont="system" size="10"/>
+                                            <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="v9Q-e8-hCi">
+                                        <rect key="frame" x="0.0" y="26" width="320" height="14"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="10" id="z9v-XT-y4Y"/>
+                                        </constraints>
+                                    </box>
+                                    <stackView distribution="equalSpacing" orientation="horizontal" alignment="top" spacing="187" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R9h-z4-3Cy">
+                                        <rect key="frame" x="0.0" y="0.0" width="360" height="20"/>
+                                        <subviews>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XMx-HD-icG">
+                                                <rect key="frame" x="-7" y="-7" width="62" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Help" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="X58-ra-jgf">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="openHelp:" target="EeT-in-kJF" id="dz5-em-hnR"/>
+                                                </connections>
+                                            </button>
+                                            <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qEP-Nk-GGw">
+                                                <rect key="frame" x="251" y="0.0" width="109" height="20"/>
+                                                <subviews>
+                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JNx-dw-5BS">
+                                                        <rect key="frame" x="-7" y="-7" width="76" height="32"/>
+                                                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="oKw-E4-TbY">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="dismissPreferences:" target="EeT-in-kJF" id="BwP-JM-W0l"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dBd-6H-XkF">
+                                                        <rect key="frame" x="63" y="-7" width="53" height="32"/>
+                                                        <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SOG-Wf-1Jb">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="applyPreferences:" target="EeT-in-kJF" id="nMm-sy-fn6"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="i1Y-Fg-tGO"/>
+                                                </constraints>
+                                                <visibilityPriorities>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                </visibilityPriorities>
+                                                <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                </customSpacing>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="LKu-Fz-tjk"/>
+                                            <constraint firstAttribute="width" constant="360" id="dT5-Js-a0s"/>
+                                        </constraints>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="4Gb-2g-xS1" firstAttribute="leading" secondItem="Tpp-gi-8q5" secondAttribute="leading" constant="20" symbolic="YES" id="Dd5-Tq-NXd"/>
+                            <constraint firstAttribute="trailing" secondItem="4Gb-2g-xS1" secondAttribute="trailing" constant="20" symbolic="YES" id="eeX-Jf-WyT"/>
+                            <constraint firstAttribute="bottom" secondItem="4Gb-2g-xS1" secondAttribute="bottom" constant="20" symbolic="YES" id="fKp-ny-BSq"/>
+                            <constraint firstItem="4Gb-2g-xS1" firstAttribute="top" secondItem="Tpp-gi-8q5" secondAttribute="top" constant="20" symbolic="YES" id="ofy-XT-VsJ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="alternateDetectionMethod" destination="WC9-Vk-b88" id="pgG-Tc-HGO"/>
+                        <outlet property="disableMouseAccel" destination="zKl-6W-QQK" id="Y6Q-Vh-qrg"/>
+                        <outlet property="disableScrollAccel" destination="w54-Ka-oAh" id="EpQ-W5-geK"/>
+                        <outlet property="invertHorizontalScroll" destination="pq8-4N-iLQ" id="zdm-WB-PHS"/>
+                        <outlet property="invertVerticalScroll" destination="jGQ-7c-3yZ" id="dJf-dl-qKt"/>
+                        <outlet property="scrollLines" destination="Slt-w3-FrL" id="Uve-SO-kL0"/>
+                        <outlet property="scrollLinesText" destination="wQb-x1-J78" id="beU-PD-4Fe"/>
+                        <outlet property="showMenuBarItem" destination="dNO-k4-DXG" id="hCf-ie-gLF"/>
+                    </connections>
+                </viewController>
+                <customObject id="1aO-dE-2h1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="655" y="417.5"/>
+        </scene>
+    </scenes>
+</document>

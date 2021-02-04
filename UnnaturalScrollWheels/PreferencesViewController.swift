@@ -17,7 +17,8 @@ class PreferencesViewController: NSViewController {
     @IBOutlet weak var alternateDetectionMethod: NSButton?
     @IBOutlet weak var disableMouseAccel: NSButton?
     @IBOutlet weak var showMenuBarItem: NSButton?
-
+    let appDelegate = NSApp.delegate as? AppDelegate
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         invertVerticalScroll?.takeIntValueFrom(Options.shared.invertVerticalScroll)
@@ -34,14 +35,47 @@ class PreferencesViewController: NSViewController {
         NSApplication.shared.activate(ignoringOtherApps: true)
     }
     
+    @IBAction func invertHorizontalScrollClicked(_ sender: Any){
+        Options.shared.invertHorizontalScroll = !Options.shared.invertHorizontalScroll
+    }
+    
+    @IBAction func invertVerticalScrollClicked(_ sender: Any){
+        Options.shared.invertVerticalScroll = !Options.shared.invertVerticalScroll
+    }
+    
+    @IBAction func disableScrollAccelClicked(_ sender: Any){
+        Options.shared.disableScrollAccel = !Options.shared.disableScrollAccel
+    }
+    
     @IBAction func scrollLinesStepperPressed(_ sender: Any) {
         scrollLinesText?.takeStringValueFrom(scrollLines?.integerValue)
+        Options.shared.scrollLines = Int64(scrollLines!.integerValue)
+    }
+    
+    @IBAction func alternateDetectionMethodClicked(_ sender: Any){
+        Options.shared.alternateDetectionMethod = !Options.shared.alternateDetectionMethod
+    }
+    
+    @IBAction func disableMouseAccelClicked(_ sender: Any){
+        Options.shared.disableMouseAccel = !Options.shared.disableMouseAccel
+        if Options.shared.disableMouseAccel {
+            Options.shared.accel = -1
+        } else {
+            Options.shared.accel = Options.shared.origAccel
+        }
+        appDelegate?.disableMouseAccel()
+    }
+    
+    @IBAction func showMenuBarItem(_ sender: Any) {
+        Options.shared.showMenuBarIcon = !Options.shared.showMenuBarIcon
+        MenuBarItem.shared.refreshVisibility()
     }
     
     @IBAction func openHelp(_ sender: Any) {
         let url = URL(string: "https://github.com/ther0n/UnnaturalScrollWheels/blob/master/README.md")!
         NSWorkspace.shared.open(url)
     }
+    
     
     @IBAction func applyPreferences(_ sender: Any) {
         UserDefaults.standard.set(invertVerticalScroll?.state == NSControl.StateValue.on, forKey: "InvertVerticalScroll")
@@ -51,20 +85,11 @@ class PreferencesViewController: NSViewController {
         UserDefaults.standard.set(alternateDetectionMethod?.state == NSControl.StateValue.on, forKey: "AlternateDetectionMethod")
         UserDefaults.standard.set(disableMouseAccel?.state == NSControl.StateValue.on, forKey: "DisableMouseAccel")
         UserDefaults.standard.set(showMenuBarItem?.state == NSControl.StateValue.on, forKey: "ShowMenuBarIcon")
-        Options.shared.loadOptions()
         dismissPreferences(self)
     }
     
-    @IBAction func showMenuBarIconClicked(_ sender: Any) {
-        Options.shared.showMenuBarIcon = !Options.shared.showMenuBarIcon
-        UserDefaults.standard.set(Options.shared.showMenuBarIcon, forKey: "ShowMenuBarIcon")
-        showMenuBarItem?.state = Options.shared.showMenuBarIcon ? NSControl.StateValue.on : NSControl.StateValue.off
-        MenuBarItem.shared.refreshVisibility()
-    }
-    
     @IBAction func dismissPreferences(_ sender: Any) {
+        appDelegate?.refresh()
         self.view.window?.performClose(self)
     }
-    
-    
 }

@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  UnnaturalScrollWheels
+
+  Created by Theron Tjapkes on 1/28/21.
+  Copyright © 2021 Theron Tjapkes. All rights reserved.
+*/
+"PermissionsTitle" = "Permissions Required";
+"PermissionsMessage" = "Please allow UnnaturalScrollWheels to control your computer in System Preferences > Security & Privacy > Privacy > Accessibility. This is needed to detect and invert scrolling.";
+"OpenPreferences" = "Open System Preferences";
+"Cancel" = "Cancel";
