@@ -14,13 +14,13 @@ class ScrollInterceptor {
     
     // Where the magic happens
     let scrollEventCallback: CGEventTapCallBack = { (proxy: CGEventTapProxy, type: CGEventType, event: CGEvent, refcon) in
-//        // Debugging
-//        // Usually 0 if scroll wheel unless Logitech Options or similar interferes
-//        print("Continuous: ", event.getIntegerValueField(.scrollWheelEventIsContinuous))
-//        // Undocumented values, but appear to only be non-zero for trackpads?
-//        print("MomentumPhase: ", event.getDoubleValueField(.scrollWheelEventMomentumPhase))
-//        print("ScrollCount: ", event.getDoubleValueField(.scrollWheelEventScrollCount))
-//        print("ScrollPhase: ", event.getDoubleValueField(.scrollWheelEventScrollPhase))
+        //        // Debugging
+        //        // Usually 0 if scroll wheel unless Logitech Options or similar interferes
+        //        print("Continuous: ", event.getIntegerValueField(.scrollWheelEventIsContinuous))
+        //        // Undocumented values, but appear to only be non-zero for trackpads?
+        //        print("MomentumPhase: ", event.getDoubleValueField(.scrollWheelEventMomentumPhase))
+        //        print("ScrollCount: ", event.getDoubleValueField(.scrollWheelEventScrollCount))
+        //        print("ScrollPhase: ", event.getDoubleValueField(.scrollWheelEventScrollPhase))
         
         var isWheel: Bool = true
         if !Options.shared.alternateDetectionMethod {
@@ -32,8 +32,8 @@ class ScrollInterceptor {
         } else {
             // Undocumented values but seem to be non-zero only for trackpads
             if event.getIntegerValueField(.scrollWheelEventMomentumPhase) != 0 ||
-            event.getDoubleValueField(.scrollWheelEventScrollCount) != 0.0 ||
-            event.getDoubleValueField(.scrollWheelEventScrollPhase) != 0.0 {
+                event.getDoubleValueField(.scrollWheelEventScrollCount) != 0.0 ||
+                event.getDoubleValueField(.scrollWheelEventScrollPhase) != 0.0 {
                 isWheel = false
             }
         }
@@ -71,9 +71,11 @@ class ScrollInterceptor {
             callback: scrollEventCallback,
             userInfo: nil
         )
-        runLoopSource = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, eventTap, 0)
-        CFRunLoopAddSource(CFRunLoopGetCurrent(), runLoopSource, CFRunLoopMode.commonModes)
-        CGEvent.tapEnable(tap: eventTap!, enable: true)
-        CFRunLoopRun()
+        if AXIsProcessTrusted(){
+            runLoopSource = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, eventTap, 0)
+            CFRunLoopAddSource(CFRunLoopGetCurrent(), runLoopSource, CFRunLoopMode.commonModes)
+            CGEvent.tapEnable(tap: eventTap!, enable: true)
+            CFRunLoopRun()
+        }
     }
 }
