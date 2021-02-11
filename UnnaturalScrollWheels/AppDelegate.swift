@@ -40,6 +40,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         }
     }
     
+    func applicationWillTerminate(_ anotification: Notification) {
+        // Reset the mouse acceleration when application terminates
+        Options.shared.disableMouseAccel = false
+        disableMouseAccel()
+    }
+    
     func pollAccessibility() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             if AXIsProcessTrusted() {

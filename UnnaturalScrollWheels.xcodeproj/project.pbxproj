@@ -305,6 +305,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 191;
 				DEVELOPMENT_TEAM = D6H5W2T379;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = UnnaturalScrollWheels/Info.plist;
@@ -313,7 +314,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 1.2.2;
+				MARKETING_VERSION = 1.2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.theron.UnnaturalScrollWheels;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "UnnaturalScrollWheels/UnnaturalScrollWheels-Bridging-Header.h";
@@ -331,6 +332,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 191;
 				DEVELOPMENT_TEAM = D6H5W2T379;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = UnnaturalScrollWheels/Info.plist;
@@ -339,7 +341,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 1.2.2;
+				MARKETING_VERSION = 1.2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.theron.UnnaturalScrollWheels;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "UnnaturalScrollWheels/UnnaturalScrollWheels-Bridging-Header.h";
