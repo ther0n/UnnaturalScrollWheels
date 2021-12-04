@@ -71,11 +71,9 @@ class ScrollInterceptor {
             callback: scrollEventCallback,
             userInfo: nil
         )
-        if AXIsProcessTrusted(){
-            runLoopSource = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, eventTap, 0)
-            CFRunLoopAddSource(CFRunLoopGetCurrent(), runLoopSource, CFRunLoopMode.commonModes)
-            CGEvent.tapEnable(tap: eventTap!, enable: true)
-            CFRunLoopRun()
-        }
+        runLoopSource = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, eventTap, 0)
+        CFRunLoopAddSource(CFRunLoopGetCurrent(), runLoopSource, CFRunLoopMode.commonModes)
+        CGEvent.tapEnable(tap: eventTap!, enable: true)
+        CFRunLoopRun()
     }
 }

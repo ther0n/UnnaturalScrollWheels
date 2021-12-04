@@ -36,7 +36,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
                 accessibilityAlert()
             }
             pollAccessibility()
-            ScrollInterceptor.shared.interceptScroll()
         }
     }
     
@@ -63,7 +62,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         alert.addButton(withTitle: NSLocalizedString("OpenPreferences", comment: ""))
         alert.addButton(withTitle: NSLocalizedString("Cancel", comment: ""))
         if alert.runModal() == NSApplication.ModalResponse.alertFirstButtonReturn {
-            NSWorkspace.shared.open(URL(string:"x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility")!)
+            let options: NSDictionary = [kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String : true]
+            AXIsProcessTrustedWithOptions(options)
+            //NSWorkspace.shared.open(URL(string:"x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility")!)
+        }
+        else {
+            NSApp.terminate(self)
         }
     }
     
