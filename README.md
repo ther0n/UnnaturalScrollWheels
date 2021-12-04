@@ -31,15 +31,13 @@ brew install --cask unnaturalscrollwheels
 
 ### Manual download
 
-1. Download the latest `.dmg` from the [releases page](/../../releases), mount it, and copy the `.app` to your applications folder like any other application.
+1. Download the latest `.dmg` from the [releases page](/../../releases), mount it, and copy the `.app` to your applications folder and open it like any other application.
 
-2. The application is not notarized since I haven't paid the yearly $100 fee to join the Apple Developer Program, you will need to right click on the `.app` and choose Open.
-
-![Open Application](/../master/Screenshots/OpenApplication.png?raw=true "Open Application")
-
-3. The app requires accessibility permissions to "Control your computer". This is required to intercept scroll events, invert them and modify their deltas to disable acceleration and apply your settings.
+2. The app requires accessibility permissions to "Control your computer". This is required to intercept scroll events, invert them and modify their deltas to disable acceleration and apply your settings.
 
 ![Accessibility Popup](/../master/Screenshots/AccessibilityPopup.png?raw=true "Accessibility Popup")
+
+![macOS Accessibility Popup](/../master/Screenshots/macOSAccessibilityPopup.png?raw=true "macOS Accessibility Popup")
 
 ![Accessibility Settings](/../master/Screenshots/AccessibilitySettings.png?raw=true "Accessibility Settings")
 
