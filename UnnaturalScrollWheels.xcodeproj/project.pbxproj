@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C86959F282EF4FC00397257 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C86959E282EF4FC00397257 /* AppDelegate.swift */; };
+		2C8695AD282EF5C500397257 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8695AC282EF5C500397257 /* main.swift */; };
+		2C8695AF282EF63400397257 /* AutoLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C86959C282EF4FC00397257 /* AutoLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		2C8695B2282EF67300397257 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C8695B1282EF67300397257 /* ServiceManagement.framework */; };
 		914D7D7825C3108C00503565 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 914D7D7A25C3108C00503565 /* Main.storyboard */; };
 		914D7D8225C32FD800503565 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 914D7D8425C32FD800503565 /* Localizable.strings */; };
 		91727DB224CCBDDA00432163 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91727DB124CCBDDA00432163 /* PreferencesViewController.swift */; };
@@ -17,7 +21,26 @@
 		91D806A024CB37BD0092C286 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91D8069F24CB37BD0092C286 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		2C8695AE282EF61C00397257 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LoginItems;
+			dstSubfolderSpec = 1;
+			files = (
+				2C8695AF282EF63400397257 /* AutoLauncher.app in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		2C86959C282EF4FC00397257 /* AutoLauncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoLauncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C86959E282EF4FC00397257 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2C8695A7282EF4FE00397257 /* AutoLauncher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AutoLauncher.entitlements; sourceTree = "<group>"; };
+		2C8695AB282EF51900397257 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		2C8695AC282EF5C500397257 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		2C8695B1282EF67300397257 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		9138880425B0CB2700A3A633 /* UnnaturalScrollWheels-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnnaturalScrollWheels-Bridging-Header.h"; sourceTree = "<group>"; };
 		914D7D7925C3108C00503565 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
 		914D7D8325C32FD800503565 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -34,21 +57,50 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		91D8069724CB37B80092C286 /* Frameworks */ = {
+		2C869599282EF4FC00397257 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		91D8069724CB37B80092C286 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C8695B2282EF67300397257 /* ServiceManagement.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C86959D282EF4FC00397257 /* AutoLauncher */ = {
+			isa = PBXGroup;
+			children = (
+				2C8695AB282EF51900397257 /* Info.plist */,
+				2C86959E282EF4FC00397257 /* AppDelegate.swift */,
+				2C8695A7282EF4FE00397257 /* AutoLauncher.entitlements */,
+				2C8695AC282EF5C500397257 /* main.swift */,
+			);
+			path = AutoLauncher;
+			sourceTree = "<group>";
+		};
+		2C8695B0282EF67300397257 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2C8695B1282EF67300397257 /* ServiceManagement.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		91D8069124CB37B80092C286 = {
 			isa = PBXGroup;
 			children = (
 				91D8069C24CB37B80092C286 /* UnnaturalScrollWheels */,
+				2C86959D282EF4FC00397257 /* AutoLauncher */,
 				91D8069B24CB37B80092C286 /* Products */,
+				2C8695B0282EF67300397257 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				91D8069A24CB37B80092C286 /* UnnaturalScrollWheels.app */,
+				2C86959C282EF4FC00397257 /* AutoLauncher.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -81,6 +134,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2C86959B282EF4FC00397257 /* AutoLauncher */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C8695A8282EF4FE00397257 /* Build configuration list for PBXNativeTarget "AutoLauncher" */;
+			buildPhases = (
+				2C869598282EF4FC00397257 /* Sources */,
+				2C869599282EF4FC00397257 /* Frameworks */,
+				2C86959A282EF4FC00397257 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AutoLauncher;
+			productName = AutoLauncher;
+			productReference = 2C86959C282EF4FC00397257 /* AutoLauncher.app */;
+			productType = "com.apple.product-type.application";
+		};
 		91D8069924CB37B80092C286 /* UnnaturalScrollWheels */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 91D806A824CB37BD0092C286 /* Build configuration list for PBXNativeTarget "UnnaturalScrollWheels" */;
@@ -88,6 +158,7 @@
 				91D8069624CB37B80092C286 /* Sources */,
 				91D8069724CB37B80092C286 /* Frameworks */,
 				91D8069824CB37B80092C286 /* Resources */,
+				2C8695AE282EF61C00397257 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -104,10 +175,13 @@
 		91D8069224CB37B80092C286 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1160;
+				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1230;
 				ORGANIZATIONNAME = "Theron Tjapkes";
 				TargetAttributes = {
+					2C86959B282EF4FC00397257 = {
+						CreatedOnToolsVersion = 13.3.1;
+					};
 					91D8069924CB37B80092C286 = {
 						CreatedOnToolsVersion = 11.6;
 						LastSwiftMigration = 1230;
@@ -128,11 +202,19 @@
 			projectRoot = "";
 			targets = (
 				91D8069924CB37B80092C286 /* UnnaturalScrollWheels */,
+				2C86959B282EF4FC00397257 /* AutoLauncher */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2C86959A282EF4FC00397257 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		91D8069824CB37B80092C286 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -146,6 +228,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2C869598282EF4FC00397257 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C8695AD282EF5C500397257 /* main.swift in Sources */,
+				2C86959F282EF4FC00397257 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		91D8069624CB37B80092C286 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -181,6 +272,66 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2C8695A9282EF4FE00397257 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_ENTITLEMENTS = AutoLauncher/AutoLauncher.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D6H5W2T379;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AutoLauncher/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Theron Tjapkes. All rights reserved.";
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.AutoLauncher;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		2C8695AA282EF4FE00397257 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_ENTITLEMENTS = AutoLauncher/AutoLauncher.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D6H5W2T379;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AutoLauncher/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 Theron Tjapkes. All rights reserved.";
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.AutoLauncher;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		91D806A624CB37BD0092C286 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -305,7 +456,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 192;
+				CURRENT_PROJECT_VERSION = 193;
 				DEVELOPMENT_TEAM = D6H5W2T379;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = UnnaturalScrollWheels/Info.plist;
@@ -314,7 +465,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 1.2.3;
+				MARKETING_VERSION = 1.2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.theron.UnnaturalScrollWheels;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "UnnaturalScrollWheels/UnnaturalScrollWheels-Bridging-Header.h";
@@ -341,7 +492,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 1.2.3;
+				MARKETING_VERSION = 1.2.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.theron.UnnaturalScrollWheels;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "UnnaturalScrollWheels/UnnaturalScrollWheels-Bridging-Header.h";
@@ -352,6 +503,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2C8695A8282EF4FE00397257 /* Build configuration list for PBXNativeTarget "AutoLauncher" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C8695A9282EF4FE00397257 /* Debug */,
+				2C8695AA282EF4FE00397257 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		91D8069524CB37B80092C286 /* Build configuration list for PBXProject "UnnaturalScrollWheels" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

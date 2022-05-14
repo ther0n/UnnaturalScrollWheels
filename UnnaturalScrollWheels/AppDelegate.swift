@@ -15,7 +15,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     private let statusItem = MenuBarItem.shared
     var prefsWindow: NSWindow?
     @IBOutlet weak var menu: NSMenu?
-    @IBOutlet weak var openAtLoginItem: NSMenuItem?
     @IBOutlet weak var preferencesMenuItem: NSMenuItem?
     @IBOutlet weak var quitMenuItem: NSMenuItem?
     
@@ -75,11 +74,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         Options.shared.loadOptions()
         statusItem.refreshVisibility()
         disableMouseAccel()
-    }
-    
-    @IBAction func openAtLoginClicked(_ sender: Any) {
-        let url = URL(string: "https://github.com/ther0n/UnnaturalScrollWheels/blob/master/RunAtLogin.md")!
-        NSWorkspace.shared.open(url)
     }
     
     @IBAction func preferencesClicked(_ sender: Any) {

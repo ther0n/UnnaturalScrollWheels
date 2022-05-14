@@ -46,7 +46,3 @@ That's it!
 ## Usage
 
 For the most part, things are self explanatory. One possible point of confusion may be how to modify your preferences once you've hidden the app from menu bar. To show preferences and to temporarily show the menu bar icon again, with the application running the background, simply open the application again which will display the preferences window.
-
-## Run at login
-
-[See here](/../master/RunAtLogin.md)

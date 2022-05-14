@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import ServiceManagement
 
 class PreferencesViewController: NSViewController {
     @IBOutlet weak var invertVerticalScroll: NSButton?
@@ -17,6 +18,7 @@ class PreferencesViewController: NSViewController {
     @IBOutlet weak var alternateDetectionMethod: NSButton?
     @IBOutlet weak var disableMouseAccel: NSButton?
     @IBOutlet weak var showMenuBarItem: NSButton?
+    @IBOutlet weak var launchAtLogin: NSButton?
     let appDelegate = NSApp.delegate as? AppDelegate
     
     override func viewDidLoad() {
@@ -29,6 +31,7 @@ class PreferencesViewController: NSViewController {
         alternateDetectionMethod?.takeIntValueFrom(Options.shared.alternateDetectionMethod)
         disableMouseAccel?.takeIntValueFrom(Options.shared.disableMouseAccel)
         showMenuBarItem?.takeIntValueFrom(Options.shared.showMenuBarIcon)
+        launchAtLogin?.takeIntValueFrom(Options.shared.launchAtLogin)
     }
     
     func activate(){
@@ -80,11 +83,16 @@ class PreferencesViewController: NSViewController {
         UserDefaults.standard.set(alternateDetectionMethod?.state == NSControl.StateValue.on, forKey: "AlternateDetectionMethod")
         UserDefaults.standard.set(disableMouseAccel?.state == NSControl.StateValue.on, forKey: "DisableMouseAccel")
         UserDefaults.standard.set(showMenuBarItem?.state == NSControl.StateValue.on, forKey: "ShowMenuBarIcon")
+        UserDefaults.standard.set(launchAtLogin?.state == NSControl.StateValue.on, forKey: "LaunchAtLogin")
         dismissPreferences(self)
     }
     
     @IBAction func dismissPreferences(_ sender: Any) {
         appDelegate?.refresh()
         self.view.window?.performClose(self)
+    }
+    @IBAction func launchAtLogin(_ sender: Any) {
+        Options.shared.launchAtLogin = !Options.shared.launchAtLogin
+        SMLoginItemSetEnabled("com.AutoLauncher" as CFString, Options.shared.launchAtLogin)
     }
 }
