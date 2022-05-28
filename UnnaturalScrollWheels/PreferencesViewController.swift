@@ -34,19 +34,19 @@ class PreferencesViewController: NSViewController {
         launchAtLogin?.takeIntValueFrom(Options.shared.launchAtLogin)
     }
     
-    func activate(){
+    func activate() {
         NSApplication.shared.activate(ignoringOtherApps: true)
     }
     
-    @IBAction func invertHorizontalScrollClicked(_ sender: Any){
+    @IBAction func invertHorizontalScrollClicked(_ sender: Any) {
         Options.shared.invertHorizontalScroll = !Options.shared.invertHorizontalScroll
     }
     
-    @IBAction func invertVerticalScrollClicked(_ sender: Any){
+    @IBAction func invertVerticalScrollClicked(_ sender: Any) {
         Options.shared.invertVerticalScroll = !Options.shared.invertVerticalScroll
     }
     
-    @IBAction func disableScrollAccelClicked(_ sender: Any){
+    @IBAction func disableScrollAccelClicked(_ sender: Any) {
         Options.shared.disableScrollAccel = !Options.shared.disableScrollAccel
     }
     
@@ -55,11 +55,11 @@ class PreferencesViewController: NSViewController {
         Options.shared.scrollLines = Int64(scrollLines!.integerValue)
     }
     
-    @IBAction func alternateDetectionMethodClicked(_ sender: Any){
+    @IBAction func alternateDetectionMethodClicked(_ sender: Any) {
         Options.shared.alternateDetectionMethod = !Options.shared.alternateDetectionMethod
     }
     
-    @IBAction func disableMouseAccelClicked(_ sender: Any){
+    @IBAction func disableMouseAccelClicked(_ sender: Any) {
         Options.shared.disableMouseAccel = !Options.shared.disableMouseAccel
         appDelegate?.disableMouseAccel()
     }

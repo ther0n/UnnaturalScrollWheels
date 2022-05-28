@@ -18,7 +18,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     @IBOutlet weak var preferencesMenuItem: NSMenuItem?
     @IBOutlet weak var quitMenuItem: NSMenuItem?
     
-    func applicationDidFinishLaunching(_ aNotification: Notification) {
+    func applicationDidFinishLaunching(_ aNotification: Notification){
         if Options.shared.firstLaunch {
             UserDefaults.standard.set(false, forKey: "FirstLaunch")
         }
@@ -27,7 +27,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         if AXIsProcessTrusted() {
             ScrollInterceptor.shared.interceptScroll()
         } else {
-            if Options.shared.firstLaunch{
+            if Options.shared.firstLaunch {
                 let alert = NSAlert()
                 alert.messageText = NSLocalizedString("PermissionsTitle", comment: "")
                 alert.informativeText = NSLocalizedString("PermissionsMessage", comment: "")
@@ -79,7 +79,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     @IBAction func preferencesClicked(_ sender: Any) {
         if AXIsProcessTrusted() {
             showPreferences()
-        } else{
+        } else {
             accessibilityAlert()
         }
     }
@@ -91,8 +91,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     
     func showPreferences() // called from menu item
     {
-        if prefsWindow == nil
-        {
+        if prefsWindow == nil {
             let storyboard = NSStoryboard(name: NSStoryboard.Name("Main"), bundle: nil)
             let controllerId = NSStoryboard.SceneIdentifier("Preferences")
             guard let controller = storyboard.instantiateController(withIdentifier: controllerId) as? NSWindowController else { return }
@@ -106,8 +105,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         NSApp.activate(ignoringOtherApps: true)
     }
     
-    func windowWillClose(_ notification: Notification)
-    {
+    func windowWillClose(_ notification: Notification) {
         prefsWindow = nil
     }
     

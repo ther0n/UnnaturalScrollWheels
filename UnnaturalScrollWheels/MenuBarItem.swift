@@ -19,7 +19,7 @@ class MenuBarItem {
         }
     }
 
-    public func refreshVisibility(){
+    public func refreshVisibility() {
         if Options.shared.showMenuBarIcon {
             add()
         } else {
