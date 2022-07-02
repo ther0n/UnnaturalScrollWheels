@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,13 +16,6 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="UnnaturalScrollWheels" systemMenu="apple" id="uQy-DD-JDr">
                                     <items>
-                                        <menuItem title="Run at login" id="ec8-Jx-hzC">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="openAtLoginClicked:" target="Voe-Tx-rLC" id="x56-9m-VbP"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem isSeparatorItem="YES" id="Mqs-gw-IM2"/>
                                         <menuItem title="Preferences…" id="BOF-NM-1cW">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
@@ -54,7 +47,6 @@
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="UnnaturalScrollWheels" customModuleProvider="target">
                     <connections>
                         <outlet property="menu" destination="uQy-DD-JDr" id="5xb-8U-G4T"/>
-                        <outlet property="openAtLoginItem" destination="ec8-Jx-hzC" id="9lM-kJ-hQA"/>
                         <outlet property="preferencesMenuItem" destination="BOF-NM-1cW" id="vOu-y5-tUW"/>
                         <outlet property="quitMenuItem" destination="4sb-4s-VLi" id="K4i-ry-V7d"/>
                     </connections>
@@ -89,14 +81,14 @@
             <objects>
                 <viewController id="EeT-in-kJF" customClass="PreferencesViewController" customModule="UnnaturalScrollWheels" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="Tpp-gi-8q5">
-                        <rect key="frame" x="0.0" y="0.0" width="400" height="351"/>
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="375"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
                             <stackView distribution="fillEqually" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Gb-2g-xS1">
-                                <rect key="frame" x="20" y="20" width="360" height="311"/>
+                                <rect key="frame" x="20" y="20" width="360" height="335"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pq8-4N-iLQ">
-                                        <rect key="frame" x="-2" y="294" width="179" height="18"/>
+                                        <rect key="frame" x="-2" y="318" width="179" height="18"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="ADb-uv-XNX"/>
                                         </constraints>
@@ -109,7 +101,7 @@
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jGQ-7c-3yZ">
-                                        <rect key="frame" x="-2" y="270" width="164" height="18"/>
+                                        <rect key="frame" x="-2" y="294" width="164" height="18"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="gU9-hz-xJn"/>
                                         </constraints>
@@ -122,13 +114,13 @@
                                         </connections>
                                     </button>
                                     <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="JFi-ui-cJO">
-                                        <rect key="frame" x="0.0" y="251" width="320" height="14"/>
+                                        <rect key="frame" x="0.0" y="275" width="320" height="14"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="10" id="cWb-lo-ujw"/>
                                         </constraints>
                                     </box>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="w54-Ka-oAh">
-                                        <rect key="frame" x="-2" y="228" width="185" height="18"/>
+                                        <rect key="frame" x="-2" y="252" width="185" height="18"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="vwG-mg-0Nt"/>
                                         </constraints>
@@ -141,10 +133,10 @@
                                         </connections>
                                     </button>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Byr-Ll-IO8">
-                                        <rect key="frame" x="0.0" y="199" width="288" height="22"/>
+                                        <rect key="frame" x="0.0" y="223" width="288" height="22"/>
                                         <subviews>
                                             <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Slt-w3-FrL">
-                                                <rect key="frame" x="-3" y="-3" width="19" height="28"/>
+                                                <rect key="frame" x="-3" y="-4" width="19" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="22" id="IAI-oo-ij5"/>
                                                     <constraint firstAttribute="width" constant="13" id="pG2-x5-flw"/>
@@ -193,11 +185,24 @@
                                         </customSpacing>
                                     </stackView>
                                     <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="MXh-JO-jZ4">
-                                        <rect key="frame" x="0.0" y="179" width="320" height="14"/>
+                                        <rect key="frame" x="0.0" y="203" width="320" height="14"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="10" id="zn7-7w-dIT"/>
                                         </constraints>
                                     </box>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CEh-IB-fcI">
+                                        <rect key="frame" x="-2" y="180" width="119" height="18"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="Emt-wl-XYu"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="check" title="Launch at login" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="yjP-KS-Mki">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="launchAtLogin:" target="EeT-in-kJF" id="yWu-hE-PMA"/>
+                                        </connections>
+                                    </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WC9-Vk-b88">
                                         <rect key="frame" x="-2" y="156" width="193" height="18"/>
                                         <constraints>
@@ -355,8 +360,10 @@ DQ
                                     <integer value="1000"/>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
+                                    <integer value="1000"/>
                                 </visibilityPriorities>
                                 <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
@@ -387,6 +394,7 @@ DQ
                         <outlet property="disableScrollAccel" destination="w54-Ka-oAh" id="EpQ-W5-geK"/>
                         <outlet property="invertHorizontalScroll" destination="pq8-4N-iLQ" id="zdm-WB-PHS"/>
                         <outlet property="invertVerticalScroll" destination="jGQ-7c-3yZ" id="dJf-dl-qKt"/>
+                        <outlet property="launchAtLogin" destination="CEh-IB-fcI" id="7vS-0I-XGr"/>
                         <outlet property="scrollLines" destination="Slt-w3-FrL" id="Uve-SO-kL0"/>
                         <outlet property="scrollLinesText" destination="wQb-x1-J78" id="beU-PD-4Fe"/>
                         <outlet property="showMenuBarItem" destination="dNO-k4-DXG" id="hCf-ie-gLF"/>

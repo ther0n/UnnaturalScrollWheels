@@ -19,7 +19,8 @@ class Options {
     var scrollLines: Int64 = 3
     var alternateDetectionMethod: Bool = false
     var disableMouseAccel: Bool = false
-    
+    var launchAtLogin: Bool = false
+
     init() {
         if UserDefaults.standard.object(forKey: "FirstLaunch") == nil {
             UserDefaults.standard.set(firstLaunch, forKey: "FirstLaunch")
@@ -48,6 +49,9 @@ class Options {
         if UserDefaults.standard.object(forKey: "OriginalAccel") == nil {
             UserDefaults.standard.set(origAccel, forKey: "OriginalAccel")
         }
+        if UserDefaults.standard.object(forKey: "LaunchAtLogin") == nil {
+            UserDefaults.standard.set(launchAtLogin, forKey: "LaunchAtLogin")
+        }
         loadOptions()
     }
     
@@ -60,5 +64,6 @@ class Options {
         scrollLines = Int64(UserDefaults.standard.integer(forKey: "ScrollLines"))
         alternateDetectionMethod = UserDefaults.standard.bool(forKey: "AlternateDetectionMethod")
         disableMouseAccel = UserDefaults.standard.bool(forKey: "DisableMouseAccel")
+        launchAtLogin = UserDefaults.standard.bool(forKey: "LaunchAtLogin")
     }
 }
