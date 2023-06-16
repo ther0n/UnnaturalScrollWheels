@@ -1,6 +1,6 @@
 # UnnaturalScrollWheels
 
-![App Icon](/../master/UnnaturalScrollWheels/Assets.xcassets/AppIcon.appiconset/256x256.png?raw=true "App Icon")
+![Unnatural](./docs/unnatural.gif "Unnatural")
 
 Invert scroll direction for physical scroll wheels while maintaining "Natural" scrolling for trackpads on MacOS.
 
