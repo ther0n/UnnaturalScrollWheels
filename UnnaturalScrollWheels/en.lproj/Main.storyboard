@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23727"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -81,36 +81,49 @@
             <objects>
                 <viewController id="EeT-in-kJF" customClass="PreferencesViewController" customModule="UnnaturalScrollWheels" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="Tpp-gi-8q5">
-                        <rect key="frame" x="0.0" y="0.0" width="400" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="399"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
                             <stackView distribution="fillEqually" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Gb-2g-xS1">
-                                <rect key="frame" x="20" y="20" width="360" height="335"/>
+                                <rect key="frame" x="20" y="20" width="360" height="359"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pq8-4N-iLQ">
-                                        <rect key="frame" x="-2" y="318" width="179" height="18"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="16" id="ADb-uv-XNX"/>
-                                        </constraints>
+                                        <rect key="frame" x="-2" y="342" width="179" height="18"/>
                                         <buttonCell key="cell" type="check" title="Invert horizontal scrolling" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="THg-pv-IgQ">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="ADb-uv-XNX"/>
+                                        </constraints>
                                         <connections>
                                             <action selector="invertHorizontalScrollClicked:" target="EeT-in-kJF" id="VQv-q1-BYZ"/>
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jGQ-7c-3yZ">
-                                        <rect key="frame" x="-2" y="294" width="164" height="18"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="16" id="gU9-hz-xJn"/>
-                                        </constraints>
+                                        <rect key="frame" x="-2" y="318" width="164" height="18"/>
                                         <buttonCell key="cell" type="check" title="Invert vertical scrolling" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="CRi-ml-BgH">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="gU9-hz-xJn"/>
+                                        </constraints>
                                         <connections>
                                             <action selector="invertVerticalScrollClicked:" target="EeT-in-kJF" id="xVH-v2-hh4"/>
+                                        </connections>
+                                    </button>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1AT-HI-EOm" userLabel="Disable horizontal scroll">
+                                        <rect key="frame" x="-2" y="294" width="201" height="18"/>
+                                        <buttonCell key="cell" type="check" title="Disable shift horizontal scroll" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Xpp-FM-eVr">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="lnY-nl-GZh"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="disableHorizontalScrollClicked:" target="EeT-in-kJF" id="cK8-CF-RlK"/>
                                         </connections>
                                     </button>
                                     <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="JFi-ui-cJO">
@@ -121,13 +134,13 @@
                                     </box>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="w54-Ka-oAh">
                                         <rect key="frame" x="-2" y="252" width="185" height="18"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="16" id="vwG-mg-0Nt"/>
-                                        </constraints>
                                         <buttonCell key="cell" type="check" title="Disable scroll acceleration" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="2qg-mY-yJ4">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="vwG-mg-0Nt"/>
+                                        </constraints>
                                         <connections>
                                             <action selector="disableScrollAccelClicked:" target="EeT-in-kJF" id="7Xl-Gj-Bdm"/>
                                         </connections>
@@ -146,7 +159,7 @@
                                                     <action selector="scrollLinesStepperPressed:" target="EeT-in-kJF" id="ibT-Uh-6UO"/>
                                                 </connections>
                                             </stepper>
-                                            <textField verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wQb-x1-J78">
+                                            <textField focusRingType="none" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wQb-x1-J78">
                                                 <rect key="frame" x="21" y="1" width="17" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="89Q-xG-Iph"/>
@@ -158,7 +171,7 @@
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YRf-tJ-Kwv">
+                                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YRf-tJ-Kwv">
                                                 <rect key="frame" x="44" y="3" width="246" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="16" id="zNE-U5-UMu"/>
@@ -192,31 +205,31 @@
                                     </box>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="teo-9l-byg">
                                         <rect key="frame" x="-2" y="180" width="119" height="18"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="16" id="iVp-nG-eUb"/>
-                                        </constraints>
                                         <buttonCell key="cell" type="check" title="Launch at login" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="F1c-hA-ghI">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="iVp-nG-eUb"/>
+                                        </constraints>
                                         <connections>
                                             <action selector="launchAtLogin:" target="EeT-in-kJF" id="jb3-mA-nUQ"/>
                                         </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WC9-Vk-b88">
                                         <rect key="frame" x="-2" y="156" width="193" height="18"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="16" id="pHm-eR-xzm"/>
-                                        </constraints>
                                         <buttonCell key="cell" type="check" title="Alternate detection method" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="fpD-L1-Nvz">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="pHm-eR-xzm"/>
+                                        </constraints>
                                         <connections>
                                             <action selector="alternateDetectionMethodClicked:" target="EeT-in-kJF" id="EGD-3a-Ipe"/>
                                         </connections>
                                     </button>
-                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="32c-TO-HCl">
+                                    <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="32c-TO-HCl">
                                         <rect key="frame" x="-2" y="136" width="313" height="13"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="13" id="EEt-Zg-Acg"/>
@@ -229,18 +242,18 @@
                                     </textField>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zKl-6W-QQK">
                                         <rect key="frame" x="-2" y="111" width="193" height="18"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="16" id="QeP-pg-trR"/>
-                                        </constraints>
                                         <buttonCell key="cell" type="check" title="Disable mouse acceleration" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="uBt-a0-G5E">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="QeP-pg-trR"/>
+                                        </constraints>
                                         <connections>
                                             <action selector="disableMouseAccelClicked:" target="EeT-in-kJF" id="wGD-8i-aFj"/>
                                         </connections>
                                     </button>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oUF-V2-P7R">
+                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oUF-V2-P7R">
                                         <rect key="frame" x="-2" y="91" width="139" height="13"/>
                                         <textFieldCell key="cell" title="1:1 mouse/cursor movement" id="YfG-ae-gyc">
                                             <font key="font" metaFont="system" size="10"/>
@@ -250,18 +263,18 @@
                                     </textField>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dNO-k4-DXG">
                                         <rect key="frame" x="-2" y="66" width="149" height="18"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="16" id="Sx7-ip-Q8Z"/>
-                                        </constraints>
                                         <buttonCell key="cell" type="check" title="Show menu bar icon" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="S1r-5q-wwg">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="Sx7-ip-Q8Z"/>
+                                        </constraints>
                                         <connections>
                                             <action selector="showMenuBarItem:" target="EeT-in-kJF" id="7bt-eT-jYr"/>
                                         </connections>
                                     </button>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sAx-Nf-FB0">
+                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sAx-Nf-FB0">
                                         <rect key="frame" x="-2" y="46" width="284" height="13"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="If disabled, open the app from Finder to show preferences" id="3iq-1l-Jxb">
                                             <font key="font" metaFont="system" size="10"/>
@@ -361,8 +374,10 @@ DQ
                                     <integer value="1000"/>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
+                                    <integer value="1000"/>
                                 </visibilityPriorities>
                                 <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
@@ -390,6 +405,7 @@ DQ
                     </view>
                     <connections>
                         <outlet property="alternateDetectionMethod" destination="WC9-Vk-b88" id="pgG-Tc-HGO"/>
+                        <outlet property="disableHorizontalScroll" destination="1AT-HI-EOm" id="Bcl-dt-ULx"/>
                         <outlet property="disableMouseAccel" destination="zKl-6W-QQK" id="Y6Q-Vh-qrg"/>
                         <outlet property="disableScrollAccel" destination="w54-Ka-oAh" id="EpQ-W5-geK"/>
                         <outlet property="invertHorizontalScroll" destination="pq8-4N-iLQ" id="zdm-WB-PHS"/>

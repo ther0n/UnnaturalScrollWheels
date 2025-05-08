@@ -12,6 +12,7 @@ import ServiceManagement
 class PreferencesViewController: NSViewController {
     @IBOutlet weak var invertVerticalScroll: NSButton?
     @IBOutlet weak var invertHorizontalScroll: NSButton?
+    @IBOutlet weak var disableHorizontalScroll: NSButton!
     @IBOutlet weak var disableScrollAccel: NSButton?
     @IBOutlet weak var scrollLinesText: NSTextField?
     @IBOutlet weak var scrollLines: NSStepper?
@@ -25,6 +26,7 @@ class PreferencesViewController: NSViewController {
         super.viewDidLoad()
         invertVerticalScroll?.takeIntValueFrom(Options.shared.invertVerticalScroll)
         invertHorizontalScroll?.takeIntValueFrom(Options.shared.invertHorizontalScroll)
+        disableHorizontalScroll?.takeIntValueFrom(Options.shared.disableShiftHorizontalScroll)
         disableScrollAccel?.takeIntValueFrom(Options.shared.disableScrollAccel)
         scrollLines?.takeIntValueFrom(Options.shared.scrollLines)
         scrollLinesText?.takeStringValueFrom(scrollLines?.integerValue)
@@ -44,6 +46,10 @@ class PreferencesViewController: NSViewController {
     
     @IBAction func invertVerticalScrollClicked(_ sender: Any) {
         Options.shared.invertVerticalScroll = !Options.shared.invertVerticalScroll
+    }
+    
+    @IBAction func disableHorizontalScrollClicked(_ sender: Any) {
+        Options.shared.disableShiftHorizontalScroll = !Options.shared.disableShiftHorizontalScroll
     }
     
     @IBAction func disableScrollAccelClicked(_ sender: Any) {
@@ -78,6 +84,7 @@ class PreferencesViewController: NSViewController {
     @IBAction func applyPreferences(_ sender: Any) {
         UserDefaults.standard.set(invertVerticalScroll?.state == NSControl.StateValue.on, forKey: "InvertVerticalScroll")
         UserDefaults.standard.set(invertHorizontalScroll?.state == NSControl.StateValue.on, forKey: "InvertHorizontalScroll")
+        UserDefaults.standard.set(disableHorizontalScroll?.state == NSControl.StateValue.on, forKey: "DisableShiftHorizontalScroll")
         UserDefaults.standard.set(disableScrollAccel?.state == NSControl.StateValue.on, forKey: "DisableScrollAccel")
         UserDefaults.standard.set(scrollLines?.integerValue, forKey: "ScrollLines")
         UserDefaults.standard.set(alternateDetectionMethod?.state == NSControl.StateValue.on, forKey: "AlternateDetectionMethod")

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreGraphics
 
 class ScrollInterceptor {
     
@@ -48,6 +49,11 @@ class ScrollInterceptor {
                 event.setIntegerValueField(
                     .scrollWheelEventDeltaAxis2, value: -event.getIntegerValueField(.scrollWheelEventDeltaAxis2))
             }
+            
+            if Options.shared.disableShiftHorizontalScroll {
+                event.flags.remove(.maskShift)
+            }
+        
             // Disable scroll acceleration
             if Options.shared.disableScrollAccel {
                 event.setIntegerValueField(.scrollWheelEventDeltaAxis1, value: event.getIntegerValueField(.scrollWheelEventDeltaAxis1).signum() * Options.shared.scrollLines)
