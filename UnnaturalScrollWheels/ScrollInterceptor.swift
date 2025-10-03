@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreGraphics
 
 class ScrollInterceptor {
     
@@ -59,21 +60,23 @@ class ScrollInterceptor {
     
     // Intercept scroll wheel events
     func interceptScroll() {
-        var eventTap: CFMachPort?
-        var runLoopSource: CFRunLoopSource?
-        
-        eventTap = CGEvent.tapCreate(
-            tap: .cghidEventTap,
-            place: .tailAppendEventTap,
-            options: .defaultTap,
-            // Mask to select only scroll wheel events
-            eventsOfInterest: CGEventMask(1 << CGEventType.scrollWheel.rawValue),
-            callback: scrollEventCallback,
-            userInfo: nil
-        )
-        runLoopSource = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, eventTap, 0)
-        CFRunLoopAddSource(CFRunLoopGetCurrent(), runLoopSource, CFRunLoopMode.commonModes)
-        CGEvent.tapEnable(tap: eventTap!, enable: true)
-        CFRunLoopRun()
+        DispatchQueue.global(qos: .userInteractive).async {
+            var eventTap: CFMachPort?
+            var runLoopSource: CFRunLoopSource?
+            
+            eventTap = CGEvent.tapCreate(
+                tap: .cghidEventTap,
+                place: .tailAppendEventTap,
+                options: .defaultTap,
+                // Mask to select only scroll wheel events
+                eventsOfInterest: CGEventMask(1 << CGEventType.scrollWheel.rawValue),
+                callback: self.scrollEventCallback,
+                userInfo: nil
+            )
+            runLoopSource = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, eventTap, 0)
+            CFRunLoopAddSource(CFRunLoopGetCurrent(), runLoopSource, CFRunLoopMode.commonModes)
+            CGEvent.tapEnable(tap: eventTap!, enable: true)
+            CFRunLoopRun()
+        }
     }
 }
