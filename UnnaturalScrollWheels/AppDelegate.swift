@@ -24,16 +24,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         }
         self.statusItem.menu = self.menu
         refresh()
-        if AXIsProcessTrusted() {
+        let trusted = AXIsProcessTrusted()
+        if trusted {
             ScrollInterceptor.shared.interceptScroll()
         } else {
-            if Options.shared.firstLaunch {
-                let alert = NSAlert()
-                alert.messageText = NSLocalizedString("PermissionsTitle", comment: "")
-                alert.informativeText = NSLocalizedString("PermissionsMessage", comment: "")
-            } else {
-                accessibilityAlert()
-            }
+            accessibilityAlert()
             pollAccessibility()
         }
     }
