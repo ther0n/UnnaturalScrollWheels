@@ -28,6 +28,8 @@
 	<true/>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2020 Theron Tjapkes. All rights reserved.</string>
+	<key>NSAppleEventsUsageDescription</key>
+	<string>Used to request Accessibility permission and manage input for scroll wheel customization.</string>
 	<key>NSMainStoryboardFile</key>
 	<string>Main</string>
 	<key>NSPrincipalClass</key>
