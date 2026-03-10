@@ -150,6 +150,19 @@ jobs:
           draft: false
           prerelease: false
 
+      # ── Update Homebrew tap ─────────────────────────────────────────
+      - name: Compute DMG SHA256
+        id: sha
+        run: echo "sha256=$(shasum -a 256 "$DMG_PATH" | awk '{print $1}')" >> "$GITHUB_OUTPUT"
+
+      - name: Trigger homebrew-tap update
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.HOMEBREW_TAP_TOKEN }}
+          repository: do4k/homebrew-tap
+          event-type: update-cask
+          client-payload: '{"version": "${{ github.ref_name }}", "sha256": "${{ steps.sha.outputs.sha256 }}"}'
+
       # ── Cleanup ─────────────────────────────────────────────────────
       - name: Clean up keychain
         if: always()
