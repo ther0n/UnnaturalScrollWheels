@@ -59,18 +59,19 @@ jobs:
       # ── Export .app from archive ────────────────────────────────────
       - name: Create export options plist
         run: |
-          cat > "$RUNNER_TEMP/ExportOptions.plist" << 'PLIST'
+          cat > "$RUNNER_TEMP/ExportOptions.plist" <<PLIST
           <?xml version="1.0" encoding="UTF-8"?>
           <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
           <plist version="1.0">
           <dict>
               <key>method</key>
               <string>developer-id</string>
-              <key>signing</key>
-              <dict>
-                  <key>style</key>
-                  <string>manual</string>
-              </dict>
+              <key>teamID</key>
+              <string>${{ secrets.APPLE_TEAM_ID }}</string>
+              <key>signingStyle</key>
+              <string>manual</string>
+              <key>signingCertificate</key>
+              <string>Developer ID Application</string>
           </dict>
           </plist>
           PLIST
