@@ -78,7 +78,7 @@ jobs:
             --apple-id "$APPLE_ID" \
             --password "$APPLE_ID_PASSWORD" \
             --team-id "$APPLE_TEAM_ID" \
-            --wait --timeout 600
+            --wait --timeout 1800
 
           # Staple the notarization ticket
           xcrun stapler staple "$APP_PATH"
@@ -117,7 +117,7 @@ jobs:
             --apple-id "$APPLE_ID" \
             --password "$APPLE_ID_PASSWORD" \
             --team-id "$APPLE_TEAM_ID" \
-            --wait --timeout 600
+            --wait --timeout 1800
 
           xcrun stapler staple "$DMG_PATH"
 
