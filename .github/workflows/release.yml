@@ -19,6 +19,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # ── Stamp version from git tag ─────────────────────────────────
+      - name: Set version from tag
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          echo "Setting MARKETING_VERSION to $TAG"
+          sed -i '' "s/MARKETING_VERSION = .*;/MARKETING_VERSION = $TAG;/g" "$PROJECT/project.pbxproj"
+          # Verify
+          grep "MARKETING_VERSION" "$PROJECT/project.pbxproj"
+
       - name: Select Xcode
         run: sudo xcode-select -s /Applications/Xcode_15.4.app/Contents/Developer
 
