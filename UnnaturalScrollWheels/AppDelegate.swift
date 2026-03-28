@@ -25,8 +25,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         self.statusItem.menu = self.menu
         
         // Add sponsor link to menu
-        let sponsorItem = NSMenuItem(title: "❤️ Sponsor this Project…", action: #selector(openSponsorPage), keyEquivalent: "")
+        let sponsorItem = NSMenuItem(title: "Sponsor this Project…", action: #selector(openSponsorPage), keyEquivalent: "")
         sponsorItem.target = self
+        if #available(macOS 11.0, *) {
+            sponsorItem.image = NSImage(systemSymbolName: "heart.fill", accessibilityDescription: "Sponsor")
+        }
         menu?.insertItem(sponsorItem, at: 2)
         
         refresh()
