@@ -275,7 +275,7 @@
                                             <constraint firstAttribute="height" constant="10" id="z9v-XT-y4Y"/>
                                         </constraints>
                                     </box>
-                                    <stackView distribution="equalSpacing" orientation="horizontal" alignment="top" spacing="187" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R9h-z4-3Cy">
+                                    <stackView distribution="equalSpacing" orientation="horizontal" alignment="top" spacing="8" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R9h-z4-3Cy">
                                         <rect key="frame" x="0.0" y="0.0" width="360" height="20"/>
                                         <subviews>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XMx-HD-icG">
@@ -286,6 +286,16 @@
                                                 </buttonCell>
                                                 <connections>
                                                     <action selector="openHelp:" target="EeT-in-kJF" id="dz5-em-hnR"/>
+                                                </connections>
+                                            </button>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sPn-r8-k2Q">
+                                                <rect key="frame" x="55" y="-7" width="110" height="32"/>
+                                                <buttonCell key="cell" type="push" title="❤️ Sponsor" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sPn-r8-k2R">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="openSponsor:" target="EeT-in-kJF" id="sPn-r8-k2S"/>
                                                 </connections>
                                             </button>
                                             <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qEP-Nk-GGw">
@@ -338,8 +348,10 @@ DQ
                                         <visibilityPriorities>
                                             <integer value="1000"/>
                                             <integer value="1000"/>
+                                            <integer value="1000"/>
                                         </visibilityPriorities>
                                         <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                         </customSpacing>

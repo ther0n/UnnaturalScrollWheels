@@ -74,6 +74,11 @@ class PreferencesViewController: NSViewController {
         NSWorkspace.shared.open(url)
     }
     
+    @IBAction func openSponsor(_ sender: Any) {
+        let url = URL(string: "https://github.com/sponsors/ther0n")!
+        NSWorkspace.shared.open(url)
+    }
+    
     
     @IBAction func applyPreferences(_ sender: Any) {
         UserDefaults.standard.set(invertVerticalScroll?.state == NSControl.StateValue.on, forKey: "InvertVerticalScroll")
