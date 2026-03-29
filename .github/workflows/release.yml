@@ -1,0 +1,219 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "*.*.*"
+
+env:
+  APP_NAME: UnnaturalScrollWheels
+  SCHEME: UnnaturalScrollWheels
+  PROJECT: UnnaturalScrollWheels.xcodeproj
+
+jobs:
+  release:
+    name: Build, Sign, Notarize & Release
+    runs-on: macos-14
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      # ── Stamp version from git tag ─────────────────────────────────
+      - name: Set version from tag
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          echo "Setting MARKETING_VERSION to $TAG"
+          sed -i '' "s/MARKETING_VERSION = .*;/MARKETING_VERSION = $TAG;/g" "$PROJECT/project.pbxproj"
+          # Verify
+          grep "MARKETING_VERSION" "$PROJECT/project.pbxproj"
+
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode_15.4.app/Contents/Developer
+
+      # ── Import signing certificate ──────────────────────────────────
+      - name: Install Apple certificate
+        env:
+          CERTIFICATE_P12_BASE64: ${{ secrets.CERTIFICATE_P12_BASE64 }}
+          CERTIFICATE_PASSWORD: ${{ secrets.CERTIFICATE_P12_PASSWORD }}
+        run: |
+          CERT_PATH=$RUNNER_TEMP/certificate.p12
+          KEYCHAIN_PATH=$RUNNER_TEMP/app-signing.keychain-db
+          KEYCHAIN_PASSWORD=$(openssl rand -hex 16)
+
+          echo -n "$CERTIFICATE_P12_BASE64" | base64 --decode -o "$CERT_PATH"
+
+          security create-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
+          security set-keychain-settings -lut 21600 "$KEYCHAIN_PATH"
+          security unlock-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
+          security import "$CERT_PATH" -P "$CERTIFICATE_PASSWORD" -A -t cert -f pkcs12 -k "$KEYCHAIN_PATH"
+          security set-key-partition-list -S apple-tool:,apple: -k "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
+          security list-keychain -d user -s "$KEYCHAIN_PATH" login.keychain
+
+      # ── Build universal binary ──────────────────────────────────────
+      - name: Archive
+        run: |
+          xcodebuild archive \
+            -project "$PROJECT" \
+            -scheme "$SCHEME" \
+            -configuration Release \
+            -destination "generic/platform=macOS" \
+            -archivePath "$RUNNER_TEMP/$APP_NAME.xcarchive" \
+            ARCHS="x86_64 arm64" \
+            ONLY_ACTIVE_ARCH=NO \
+            CODE_SIGN_STYLE=Manual \
+            CODE_SIGN_IDENTITY="Developer ID Application" \
+            DEVELOPMENT_TEAM="${{ secrets.APPLE_TEAM_ID }}"
+
+      # ── Extract .app from archive ──────────────────────────────────
+      - name: Extract app from archive
+        run: |
+          mkdir -p "$RUNNER_TEMP/export"
+          cp -R "$RUNNER_TEMP/$APP_NAME.xcarchive/Products/Applications/$APP_NAME.app" "$RUNNER_TEMP/export/"
+
+      # ── Notarize ───────────────────────────────────────────────────
+      - name: Notarize app
+        env:
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_ID_PASSWORD: ${{ secrets.APPLE_ID_PASSWORD }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        run: |
+          APP_PATH="$RUNNER_TEMP/export/$APP_NAME.app"
+
+          # Create a zip for notarization submission
+          ditto -c -k --keepParent "$APP_PATH" "$RUNNER_TEMP/$APP_NAME.zip"
+
+          # Submit and capture the submission ID
+          SUBMIT_OUT=$(xcrun notarytool submit "$RUNNER_TEMP/$APP_NAME.zip" \
+            --apple-id "$APPLE_ID" \
+            --password "$APPLE_ID_PASSWORD" \
+            --team-id "$APPLE_TEAM_ID" \
+            --output-format json)
+          SUB_ID=$(echo "$SUBMIT_OUT" | python3 -c "import sys,json; print(json.load(sys.stdin)['id'])")
+          echo "Submission ID: $SUB_ID"
+
+          # Poll until complete (up to 60 minutes)
+          for i in $(seq 1 120); do
+            sleep 30
+            STATUS_OUT=$(xcrun notarytool info "$SUB_ID" \
+              --apple-id "$APPLE_ID" \
+              --password "$APPLE_ID_PASSWORD" \
+              --team-id "$APPLE_TEAM_ID" \
+              --output-format json 2>&1) || true
+            STATUS=$(echo "$STATUS_OUT" | python3 -c "import sys,json; print(json.load(sys.stdin).get('status','Unknown'))" 2>/dev/null || echo "Unknown")
+            echo "Attempt $i: status=$STATUS"
+            if [ "$STATUS" = "Accepted" ]; then
+              echo "Notarization accepted!"
+              break
+            elif [ "$STATUS" = "Invalid" ] || [ "$STATUS" = "Rejected" ]; then
+              echo "Notarization failed with status: $STATUS"
+              xcrun notarytool log "$SUB_ID" \
+                --apple-id "$APPLE_ID" \
+                --password "$APPLE_ID_PASSWORD" \
+                --team-id "$APPLE_TEAM_ID"
+              exit 1
+            fi
+          done
+
+          if [ "$STATUS" != "Accepted" ]; then
+            echo "Notarization timed out"
+            exit 1
+          fi
+
+          # Staple the notarization ticket
+          xcrun stapler staple "$APP_PATH"
+
+      # ── Create DMG ─────────────────────────────────────────────────
+      - name: Create DMG
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          DMG_NAME="${APP_NAME}-${TAG}.dmg"
+          APP_PATH="$RUNNER_TEMP/export/$APP_NAME.app"
+
+          # Create a temporary DMG directory with an Applications symlink
+          DMG_DIR="$RUNNER_TEMP/dmg"
+          mkdir -p "$DMG_DIR"
+          cp -R "$APP_PATH" "$DMG_DIR/"
+          ln -s /Applications "$DMG_DIR/Applications"
+
+          hdiutil create \
+            -volname "$APP_NAME" \
+            -srcfolder "$DMG_DIR" \
+            -ov \
+            -format UDZO \
+            "$RUNNER_TEMP/$DMG_NAME"
+
+          echo "DMG_PATH=$RUNNER_TEMP/$DMG_NAME" >> "$GITHUB_ENV"
+          echo "DMG_NAME=$DMG_NAME" >> "$GITHUB_ENV"
+
+      # ── Notarize DMG ───────────────────────────────────────────────
+      - name: Notarize DMG
+        env:
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_ID_PASSWORD: ${{ secrets.APPLE_ID_PASSWORD }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        run: |
+          SUBMIT_OUT=$(xcrun notarytool submit "$DMG_PATH" \
+            --apple-id "$APPLE_ID" \
+            --password "$APPLE_ID_PASSWORD" \
+            --team-id "$APPLE_TEAM_ID" \
+            --output-format json)
+          SUB_ID=$(echo "$SUBMIT_OUT" | python3 -c "import sys,json; print(json.load(sys.stdin)['id'])")
+          echo "Submission ID: $SUB_ID"
+
+          for i in $(seq 1 120); do
+            sleep 30
+            STATUS_OUT=$(xcrun notarytool info "$SUB_ID" \
+              --apple-id "$APPLE_ID" \
+              --password "$APPLE_ID_PASSWORD" \
+              --team-id "$APPLE_TEAM_ID" \
+              --output-format json 2>&1) || true
+            STATUS=$(echo "$STATUS_OUT" | python3 -c "import sys,json; print(json.load(sys.stdin).get('status','Unknown'))" 2>/dev/null || echo "Unknown")
+            echo "Attempt $i: status=$STATUS"
+            if [ "$STATUS" = "Accepted" ]; then
+              echo "Notarization accepted!"
+              break
+            elif [ "$STATUS" = "Invalid" ] || [ "$STATUS" = "Rejected" ]; then
+              echo "Notarization failed with status: $STATUS"
+              xcrun notarytool log "$SUB_ID" \
+                --apple-id "$APPLE_ID" \
+                --password "$APPLE_ID_PASSWORD" \
+                --team-id "$APPLE_TEAM_ID"
+              exit 1
+            fi
+          done
+
+          if [ "$STATUS" != "Accepted" ]; then
+            echo "Notarization timed out"
+            exit 1
+          fi
+
+          xcrun stapler staple "$DMG_PATH"
+
+      # ── GitHub Release ─────────────────────────────────────────────
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ env.DMG_PATH }}
+          generate_release_notes: true
+          draft: false
+          prerelease: false
+
+      # ── Update Homebrew tap ─────────────────────────────────────────
+      - name: Compute DMG SHA256
+        id: sha
+        run: echo "sha256=$(shasum -a 256 "$DMG_PATH" | awk '{print $1}')" >> "$GITHUB_OUTPUT"
+
+      - name: Trigger homebrew-tap update
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.HOMEBREW_TAP_TOKEN }}
+          repository: do4k/homebrew-tap
+          event-type: update-cask
+          client-payload: '{"version": "${{ github.ref_name }}", "sha256": "${{ steps.sha.outputs.sha256 }}"}'
+
+      # ── Cleanup ─────────────────────────────────────────────────────
+      - name: Clean up keychain
+        if: always()
+        run: |
+          security delete-keychain "$RUNNER_TEMP/app-signing.keychain-db" 2>/dev/null || true

@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    name: Build
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode_15.4.app/Contents/Developer
+
+      - name: Build (Release, Universal)
+        run: |
+          xcodebuild build \
+            -project UnnaturalScrollWheels.xcodeproj \
+            -scheme UnnaturalScrollWheels \
+            -configuration Release \
+            -destination "generic/platform=macOS" \
+            ARCHS="x86_64 arm64" \
+            ONLY_ACTIVE_ARCH=NO \
+            CODE_SIGN_IDENTITY="-" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO | xcpretty
+
+      - name: Verify universal binary
+        run: |
+          APP=$(find ~/Library/Developer/Xcode/DerivedData -name "UnnaturalScrollWheels.app" -path "*/Release/*" | head -1)
+          echo "App found at: $APP"
+          file "$APP/Contents/MacOS/UnnaturalScrollWheels"
+          lipo -info "$APP/Contents/MacOS/UnnaturalScrollWheels"
