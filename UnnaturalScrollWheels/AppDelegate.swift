@@ -23,6 +23,15 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
             UserDefaults.standard.set(false, forKey: "FirstLaunch")
         }
         self.statusItem.menu = self.menu
+        
+        // Add sponsor link to menu
+        let sponsorItem = NSMenuItem(title: "Sponsor this Project…", action: #selector(openSponsorPage), keyEquivalent: "")
+        sponsorItem.target = self
+        if #available(macOS 11.0, *) {
+            sponsorItem.image = NSImage(systemSymbolName: "heart.fill", accessibilityDescription: "Sponsor")
+        }
+        menu?.insertItem(sponsorItem, at: 2)
+        
         refresh()
         let trusted = AXIsProcessTrusted()
         if trusted {
@@ -82,6 +91,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     @IBAction func showAbout(_ sender: Any) {
         NSApp.activate(ignoringOtherApps: true)
         NSApp.orderFrontStandardAboutPanel(sender)
+    }
+    
+    @objc func openSponsorPage() {
+        if let url = URL(string: "https://github.com/sponsors/ther0n") {
+            NSWorkspace.shared.open(url)
+        }
     }
     
     func showPreferences() // called from menu item
