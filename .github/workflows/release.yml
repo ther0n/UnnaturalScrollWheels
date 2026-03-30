@@ -83,42 +83,13 @@ jobs:
           # Create a zip for notarization submission
           ditto -c -k --keepParent "$APP_PATH" "$RUNNER_TEMP/$APP_NAME.zip"
 
-          # Submit and capture the submission ID
-          SUBMIT_OUT=$(xcrun notarytool submit "$RUNNER_TEMP/$APP_NAME.zip" \
+          # Submit and wait for notarization (up to 90 minutes)
+          xcrun notarytool submit "$RUNNER_TEMP/$APP_NAME.zip" \
             --apple-id "$APPLE_ID" \
             --password "$APPLE_ID_PASSWORD" \
             --team-id "$APPLE_TEAM_ID" \
-            --output-format json)
-          SUB_ID=$(echo "$SUBMIT_OUT" | python3 -c "import sys,json; print(json.load(sys.stdin)['id'])")
-          echo "Submission ID: $SUB_ID"
-
-          # Poll until complete (up to 90 minutes)
-          for i in $(seq 1 180); do
-            sleep 30
-            STATUS_OUT=$(xcrun notarytool info "$SUB_ID" \
-              --apple-id "$APPLE_ID" \
-              --password "$APPLE_ID_PASSWORD" \
-              --team-id "$APPLE_TEAM_ID" \
-              --output-format json 2>&1) || true
-            STATUS=$(echo "$STATUS_OUT" | python3 -c "import sys,json; print(json.load(sys.stdin).get('status','Unknown'))" 2>/dev/null || echo "Unknown")
-            echo "Attempt $i: status=$STATUS"
-            if [ "$STATUS" = "Accepted" ]; then
-              echo "Notarization accepted!"
-              break
-            elif [ "$STATUS" = "Invalid" ] || [ "$STATUS" = "Rejected" ]; then
-              echo "Notarization failed with status: $STATUS"
-              xcrun notarytool log "$SUB_ID" \
-                --apple-id "$APPLE_ID" \
-                --password "$APPLE_ID_PASSWORD" \
-                --team-id "$APPLE_TEAM_ID"
-              exit 1
-            fi
-          done
-
-          if [ "$STATUS" != "Accepted" ]; then
-            echo "Notarization timed out"
-            exit 1
-          fi
+            --wait \
+            --timeout 90m
 
           # Staple the notarization ticket
           xcrun stapler staple "$APP_PATH"
@@ -153,41 +124,13 @@ jobs:
           APPLE_ID_PASSWORD: ${{ secrets.APPLE_ID_PASSWORD }}
           APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
         run: |
-          SUBMIT_OUT=$(xcrun notarytool submit "$DMG_PATH" \
+          # Submit and wait for notarization (up to 90 minutes)
+          xcrun notarytool submit "$DMG_PATH" \
             --apple-id "$APPLE_ID" \
             --password "$APPLE_ID_PASSWORD" \
             --team-id "$APPLE_TEAM_ID" \
-            --output-format json)
-          SUB_ID=$(echo "$SUBMIT_OUT" | python3 -c "import sys,json; print(json.load(sys.stdin)['id'])")
-          echo "Submission ID: $SUB_ID"
-
-          # Poll until complete (up to 90 minutes)
-          for i in $(seq 1 180); do
-            sleep 30
-            STATUS_OUT=$(xcrun notarytool info "$SUB_ID" \
-              --apple-id "$APPLE_ID" \
-              --password "$APPLE_ID_PASSWORD" \
-              --team-id "$APPLE_TEAM_ID" \
-              --output-format json 2>&1) || true
-            STATUS=$(echo "$STATUS_OUT" | python3 -c "import sys,json; print(json.load(sys.stdin).get('status','Unknown'))" 2>/dev/null || echo "Unknown")
-            echo "Attempt $i: status=$STATUS"
-            if [ "$STATUS" = "Accepted" ]; then
-              echo "Notarization accepted!"
-              break
-            elif [ "$STATUS" = "Invalid" ] || [ "$STATUS" = "Rejected" ]; then
-              echo "Notarization failed with status: $STATUS"
-              xcrun notarytool log "$SUB_ID" \
-                --apple-id "$APPLE_ID" \
-                --password "$APPLE_ID_PASSWORD" \
-                --team-id "$APPLE_TEAM_ID"
-              exit 1
-            fi
-          done
-
-          if [ "$STATUS" != "Accepted" ]; then
-            echo "Notarization timed out"
-            exit 1
-          fi
+            --wait \
+            --timeout 90m
 
           xcrun stapler staple "$DMG_PATH"
 
