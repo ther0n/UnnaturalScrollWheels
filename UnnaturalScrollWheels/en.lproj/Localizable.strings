@@ -6,6 +6,6 @@
   Copyright © 2021 Theron Tjapkes. All rights reserved.
 */
 "PermissionsTitle" = "Permissions Required";
-"PermissionsMessage" = "Please allow UnnaturalScrollWheels to control your computer in System Preferences > Security & Privacy > Privacy > Accessibility. This is needed to detect and invert scrolling.";
-"OpenPreferences" = "Open System Preferences";
+"PermissionsMessage" = "Please allow UnnaturalScrollWheels to control your computer in System Settings > Privacy & Security > Accessibility. This is needed to detect and invert scrolling.";
+"OpenPreferences" = "Open System Settings";
 "Cancel" = "Cancel";
