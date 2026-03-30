@@ -63,13 +63,27 @@ jobs:
             ONLY_ACTIVE_ARCH=NO \
             CODE_SIGN_STYLE=Manual \
             CODE_SIGN_IDENTITY="Developer ID Application" \
-            DEVELOPMENT_TEAM="${{ secrets.APPLE_TEAM_ID }}"
+            DEVELOPMENT_TEAM="${{ secrets.APPLE_TEAM_ID }}" \
+            OTHER_CODE_SIGN_FLAGS="--timestamp"
 
       # ── Extract .app from archive ──────────────────────────────────
       - name: Extract app from archive
         run: |
           mkdir -p "$RUNNER_TEMP/export"
           cp -R "$RUNNER_TEMP/$APP_NAME.xcarchive/Products/Applications/$APP_NAME.app" "$RUNNER_TEMP/export/"
+
+      # ── Verify code signing before notarization ─────────────────────
+      - name: Verify code signing
+        run: |
+          APP_PATH="$RUNNER_TEMP/export/$APP_NAME.app"
+          echo "=== Deep verification ==="
+          codesign --verify --deep --strict --verbose=4 "$APP_PATH"
+          echo ""
+          echo "=== Gatekeeper assessment ==="
+          spctl --assess --type exec --verbose=4 "$APP_PATH"
+          echo ""
+          echo "=== Check embedded code timestamps ==="
+          codesign --display --verbose=4 "$APP_PATH"
 
       # ── Notarize ───────────────────────────────────────────────────
       - name: Notarize app
