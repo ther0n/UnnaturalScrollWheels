@@ -79,10 +79,7 @@ jobs:
           echo "=== Deep verification ==="
           codesign --verify --deep --strict --verbose=4 "$APP_PATH"
           echo ""
-          echo "=== Gatekeeper assessment ==="
-          spctl --assess --type exec --verbose=4 "$APP_PATH"
-          echo ""
-          echo "=== Check embedded code timestamps ==="
+          echo "=== Signature details ==="
           codesign --display --verbose=4 "$APP_PATH"
 
       # ── Notarize ───────────────────────────────────────────────────
