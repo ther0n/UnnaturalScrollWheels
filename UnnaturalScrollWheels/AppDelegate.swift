@@ -133,14 +133,21 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         let client: IOHIDEventSystemClient = IOHIDEventSystemClientCreateSimpleClient(kCFAllocatorDefault)
         let mouseAccelerationType: CFString = kIOHIDMouseAccelerationType as NSString
         
-        // Get the starting acceleration value
+        // Get the starting acceleration value.
+        // IOHIDEventSystemClientCopyProperty can return nil — notably right
+        // after the system wakes from sleep / low-battery standby while the HID
+        // subsystem is still coming back. Force-unwrapping it there crashed the
+        // app (and made closing the preferences window crash, since that also
+        // refreshes mouse accel). Read it defensively instead.
         var origAccel: Int32 = 0
-        let originalAccelRef: CFTypeRef = IOHIDEventSystemClientCopyProperty(client, mouseAccelerationType)!
-        CFNumberGetValue((originalAccelRef as! CFNumber), CFNumberType.sInt32Type, &origAccel)
-        // Only save it if it's not -1 (acceleration off)
-        if origAccel != -1 {
-            Options.shared.origAccel = origAccel
-            UserDefaults.standard.set(origAccel, forKey: "OriginalAccel")
+        if let originalAccelRef = IOHIDEventSystemClientCopyProperty(client, mouseAccelerationType),
+           CFGetTypeID(originalAccelRef) == CFNumberGetTypeID() {
+            CFNumberGetValue((originalAccelRef as! CFNumber), CFNumberType.sInt32Type, &origAccel)
+            // Only save it if it's not -1 (acceleration off)
+            if origAccel != -1 {
+                Options.shared.origAccel = origAccel
+                UserDefaults.standard.set(origAccel, forKey: "OriginalAccel")
+            }
         }
         if Options.shared.disableMouseAccel {
             Options.shared.accel = -1

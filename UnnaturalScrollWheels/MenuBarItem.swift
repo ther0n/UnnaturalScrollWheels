@@ -28,14 +28,24 @@ class MenuBarItem {
     }
     
     private func add() {
-        statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-        statusItem?.button?.title = "⭥"
-        statusItem?.menu = self.menu
+        // refresh() calls this on every preferences close; without this guard a
+        // brand new NSStatusItem was created each time, leaking the old one and
+        // leaving duplicate/zombie menu bar icons.
+        guard statusItem == nil else {
+            statusItem?.menu = menu
+            return
+        }
+
+        let newStatusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+        newStatusItem.button?.title = "⭥"
+        newStatusItem.menu = menu
+        statusItem = newStatusItem
     }
-    
+
     private func remove() {
         guard let statusItem = statusItem else { return }
         NSStatusBar.system.removeStatusItem(statusItem)
+        self.statusItem = nil
     }
 }
 
