@@ -122,12 +122,21 @@ jobs:
           echo "=== Verifying staged app ==="
           codesign --verify --deep --strict --verbose=4 "$DMG_DIR/$APP_NAME.app"
 
-          hdiutil create \
-            -volname "$APP_NAME" \
-            -srcfolder "$DMG_DIR" \
-            -ov \
-            -format UDZO \
-            "$RUNNER_TEMP/$DMG_NAME"
+           hdiutil create \
+             -volname "$APP_NAME" \
+             -srcfolder "$DMG_DIR" \
+             -ov \
+             -format UDZO \
+             "$RUNNER_TEMP/$DMG_NAME"
+
+           echo "DMG_PATH=$RUNNER_TEMP/$DMG_NAME" >> "$GITHUB_ENV"
+           echo "DMG_NAME=$DMG_NAME" >> "$GITHUB_ENV"
+         run: |
+           echo "=== Verifying app inside DMG ==="
+           hdiutil attach "$DMG_PATH" -nobrowse -readonly
+           codesign --verify --deep --strict --verbose=4 "/Volumes/$APP_NAME/$APP_NAME.app"
+           spctl -a -vv "/Volumes/$APP_NAME/$APP_NAME.app"
+           hdiutil detach "/Volumes/$APP_NAME"
 
        # ── Verify DMG ──────────────────────────────────────────────────
        - name: Verify DMG
