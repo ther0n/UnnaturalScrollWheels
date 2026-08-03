@@ -102,10 +102,8 @@ jobs:
             --wait \
             --timeout 90m
 
-          # Staple the notarization ticket
-          xcrun stapler staple "$APP_PATH"
-
-      # ── Create DMG ─────────────────────────────────────────────────
+           # Staple the notarization ticket
+           xcrun stapler staple "$APP_PATH"
       - name: Create DMG
         run: |
           TAG="${GITHUB_REF_NAME}"
