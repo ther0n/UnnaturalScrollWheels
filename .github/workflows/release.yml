@@ -94,13 +94,13 @@ jobs:
           # Create a zip for notarization submission
           ditto -c -k --keepParent "$APP_PATH" "$RUNNER_TEMP/$APP_NAME.zip"
 
-          # Submit and wait for notarization (up to 90 minutes)
-          xcrun notarytool submit "$RUNNER_TEMP/$APP_NAME.zip" \
-            --apple-id "$APPLE_ID" \
-            --password "$APPLE_ID_PASSWORD" \
-            --team-id "$APPLE_TEAM_ID" \
-            --wait \
-            --timeout 90m
+           # Submit and wait for notarization (up to 90 minutes)
+           xcrun notarytool submit "$RUNNER_TEMP/$APP_NAME.zip" \
+             --apple-id "$APPLE_ID" \
+             --password "$APPLE_ID_PASSWORD" \
+             --team-id "$APPLE_TEAM_ID" \
+             --wait \
+             --timeout 90m
 
            # Staple the notarization ticket
            xcrun stapler staple "$APP_PATH"
