@@ -129,18 +129,17 @@ jobs:
             -format UDZO \
             "$RUNNER_TEMP/$DMG_NAME"
 
-          echo "DMG_PATH=$RUNNER_TEMP/$DMG_NAME" >> "$GITHUB_ENV"
-          echo "DMG_NAME=$DMG_NAME" >> "$GITHUB_ENV"
+       # ── Verify DMG ──────────────────────────────────────────────────
+       - name: Verify DMG
+         run: |
+           echo "=== Verifying app inside DMG ==="
+           hdiutil attach "$DMG_PATH" -nobrowse -readonly
+           codesign --verify --deep --strict --verbose=4 "/Volumes/$APP_NAME/$APP_NAME.app"
+           spctl -a -vv "/Volumes/$APP_NAME/$APP_NAME.app"
+           hdiutil detach "/Volumes/$APP_NAME"
 
-          # Verify the app inside the final DMG
-          echo "=== Verifying app inside DMG ==="
-          hdiutil attach "$DMG_PATH" -nobrowse -readonly
-          codesign --verify --deep --strict --verbose=4 "/Volumes/$APP_NAME/$APP_NAME.app"
-          spctl -a -vv "/Volumes/$APP_NAME/$APP_NAME.app"
-          hdiutil detach "/Volumes/$APP_NAME"
-
-      # ── Notarize DMG ───────────────────────────────────────────────
-      - name: Notarize DMG
+       # ── Notarize DMG ───────────────────────────────────────────────
+       - name: Notarize DMG
         env:
           APPLE_ID: ${{ secrets.APPLE_ID }}
           APPLE_ID_PASSWORD: ${{ secrets.APPLE_ID_PASSWORD }}
